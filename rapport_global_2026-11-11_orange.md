@@ -4,7 +4,7 @@ Jeu terminé. 8 parties, 400 numéros tirés au total.
 
 ## Avancement des parties
 
-| Partie | Dossier | Numéros tirés | Quine(s) gagnée(s) (carton, n° de tirage) | Carton plein |
+| Partie | Dossier | Numéros tirés | Quine(s) réalisée(s) (carton, n° de tirage) | Carton plein |
 |---|---|---|---|---|
 | 1 | orange | 47 | aucune | non |
 | 2 | orange_2 | 48 | 009 (40e), 003 (45e) | non |
@@ -15,9 +15,9 @@ Jeu terminé. 8 parties, 400 numéros tirés au total.
 | 7 | orange_7 | 55 | 006 (41e), 009 (46e), 007 (47e), 003 (55e) | non |
 | 8 | orange_8 | 54 | 008 (39e) | non |
 
-Total : 11 quines, 0 carton plein sur 96 cartons joués (8 parties x 12 cartons).
+Total : 11 quines réalisées sur les cartons, 0 carton plein, sur 96 cartons joués (8 parties x 12 cartons). Les cartons ne sont rattachés à aucun joueur (champ `joueur` vide), donc ces quines ne sont pas attribuées à une personne. Aucun gain n'est établi par ces données.
 
-## Quines par carton
+## Quines réalisées par carton
 
 | Carton | Quines | Cases cochées (cumul des parties) |
 |---|---|---|
