@@ -1,6 +1,6 @@
 # Rapport global : Orange, 11/11/2026
 
-Jeu terminé. 8 parties, 400 numéros tirés au total. 12 cartons par partie.
+Jeu terminé. 10 parties, 500 numéros tirés au total. 12 cartons par partie.
 
 ## Avancement des parties
 
@@ -14,27 +14,29 @@ Jeu terminé. 8 parties, 400 numéros tirés au total. 12 cartons par partie.
 | 6 | orange_6 | 51 | 84 | non |
 | 7 | orange_7 | 55 | 80 | non |
 | 8 | orange_8 | 54 | 72 | non |
+| 9 | orange_9 | 52 | 73 | non |
+| 10 | orange_10 | 48 | 62 | non |
 
-Aucun carton plein sur les 96 cartons joués (8 parties × 12 cartons).
+Aucun carton plein sur les 120 cartons joués (10 parties × 12 cartons).
 
-## Cases cochées par carton (cumul des 8 parties)
+## Cases cochées par carton (cumul des 10 parties)
 
 | Carton | Cases cochées |
 |---|---|
-| 009 | 79 |
-| 006 | 75 |
-| 001 | 74 |
-| 003 | 70 |
-| 008 | 69 |
-| 007 | 66 |
-| 010 | 67 |
-| 005 | 63 |
-| 004 | 61 |
-| 011 | 62 |
-| 002 | 57 |
-| 012 | 57 |
+| 009 | 97 |
+| 006 | 93 |
+| 001 | 89 |
+| 010 | 88 |
+| 003 | 86 |
+| 008 | 86 |
+| 007 | 82 |
+| 004 | 79 |
+| 005 | 78 |
+| 011 | 77 |
+| 002 | 75 |
+| 012 | 70 |
 
-Sur 15 numéros par carton, le meilleur cumul est 79 cases sur 8 parties (carton 009).
+Sur 15 numéros par carton, le meilleur cumul est 97 cases sur 10 parties (carton 009).
 
 ## Chances de carton plein
 
@@ -48,14 +50,16 @@ Simulation avec des cartons de même format et des tirages de même longueur (20
 
 Un carton plein était très improbable (environ 1 sur 3 000 par carton à 48 tirages) et n'est pas arrivé.
 
-## Statistiques des numéros (8 parties)
+## Statistiques des numéros (10 parties)
 
 - Numéros jamais sortis : aucun, les 90 numéros sont sortis au moins une fois.
-- Sortis dans les 8 parties : 20, 45, 75, 80.
-- Sortis une seule fois : 66.
-- Sortis dans 2 parties seulement : 1, 2, 5, 14, 15, 19, 22, 30, 34, 43, 47, 59, 62, 83, 90.
+- Sortis dans les 10 parties : 80.
+- Sortis dans 9 parties : 3, 20, 31, 45.
+- Sortis dans 2 parties seulement : 19, 22, 34, 66, 90.
+
+Le détail complet (répartition par dizaine, cases par partie, numéros par nombre de parties) est dans `statistiques_2026-11-11_orange.md`.
 
 ## Points à vérifier
 
-- Les parties 6 à 8 ont 51, 55 et 54 numéros, contre 47 à 49 pour les parties 1 à 5. À vérifier pour une éventuelle erreur de saisie.
-- Le fichier `statistiques_2026-11-11_orange.md` est périmé : il ne couvre que les parties 1 à 4 et ne doit pas être utilisé.
+- Les parties 6 à 10 ont entre 48 et 55 numéros, contre 47 à 49 pour les parties 1 à 5. À vérifier pour une éventuelle erreur de saisie.
+- Aucun joueur n'est renseigné sur les cartons : les résultats individuels ne peuvent pas être établis.
