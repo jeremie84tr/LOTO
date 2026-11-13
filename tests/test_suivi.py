@@ -98,14 +98,21 @@ def test_partie_reelle_lecture_seule(run_script, tmp_path):  # SU-11 état d'une
     assert _tirage(d) == avant
 
 
-@pytest.mark.xfail(strict=True, reason="BUG-03 : un argument non numérique fait planter suivi.py (ValueError)")
-def test_argument_non_numerique(run_script, partie_tmp):  # SU-12
+def test_argument_non_numerique(run_script, partie_tmp):  # SU-12 (BUG-03 corrigé)
     d = partie_tmp()
     r = run_script("suivi.py", d, "douze", 5)
     assert r.returncode == 0 and _tirage(d) == [5]
+    assert "Ignoré (pas un numéro): douze" in r.stdout
 
 
-@pytest.mark.xfail(strict=True, reason="BUG-04 : dossier absent ou sans argument -> traceback au lieu d'un message d'usage")
-def test_dossier_absent(run_script, tmp_path):  # SU-13
+def test_dossier_absent(run_script, tmp_path):  # SU-13 (BUG-04 corrigé)
     r = run_script("suivi.py", tmp_path / "inexistant")
-    assert "Traceback" not in r.stderr
+    assert r.returncode != 0
+    assert "Traceback" not in r.stderr and "Partie introuvable" in r.stderr
+    assert not (tmp_path / "inexistant").exists()
+
+
+def test_sans_argument(run_script):  # SU-14
+    r = run_script("suivi.py")
+    assert r.returncode != 0
+    assert "Traceback" not in r.stderr and "Usage" in r.stderr

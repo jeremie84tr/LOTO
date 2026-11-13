@@ -153,13 +153,15 @@ def test_cli_script_executable(run_script, tmp_path):  # NP-20 lancement réel e
     assert r.returncode == 0 and "--cartons" in r.stdout
 
 
-@pytest.mark.xfail(strict=True, reason="BUG-01 : un lieu sans caractère alphanumérique donne un dossier 'AAAA-MM-JJ_'")
-def test_cli_refuse_lieu_vide(cli, tmp_path):  # NP-21
-    with pytest.raises(SystemExit):
+def test_cli_refuse_lieu_vide(cli, tmp_path):  # NP-21 (BUG-01 corrigé)
+    with pytest.raises(SystemExit) as e:
         cli("2026-11-20", "!!!")
+    assert e.value.code == 2
+    assert list(tmp_path.iterdir()) == []
 
 
-@pytest.mark.xfail(strict=True, reason="BUG-02 : --cartons négatif accepté silencieusement")
-def test_cli_refuse_cartons_negatif(cli):  # NP-22
-    with pytest.raises(SystemExit):
+def test_cli_refuse_cartons_negatif(cli, tmp_path):  # NP-22 (BUG-02 corrigé)
+    with pytest.raises(SystemExit) as e:
         cli("2026-11-20", "Orange", "--cartons", -3)
+    assert e.value.code == 2
+    assert list(tmp_path.iterdir()) == []

@@ -2,10 +2,13 @@
 """Usage: ./suivi.py parties/2026-11-11_orange [n1 n2 ...]  (ajoute des numéros puis affiche l'état)"""
 import json, sys, glob
 from pathlib import Path
+if len(sys.argv) < 2: sys.exit(__doc__)
 d = Path(sys.argv[1]); f = d / "tirage" / "numeros.json"
+if not f.is_file(): sys.exit(f"Partie introuvable : {d} (fichier {f} absent)")
 tires = json.loads(f.read_text())
 for a in sys.argv[2:]:
-    n = int(a)
+    try: n = int(a)
+    except ValueError: print(f"Ignoré (pas un numéro): {a}"); continue
     if not 1 <= n <= 90: print(f"Ignoré (hors 1-90): {n}"); continue
     if n in tires: print(f"Déjà tiré: {n}"); continue
     tires.append(n)

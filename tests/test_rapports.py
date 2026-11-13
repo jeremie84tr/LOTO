@@ -106,11 +106,6 @@ def test_cumul_cases_par_carton(rapport):  # RA-04
 STATS = [r for r in RAPPORTS if r.name.startswith("statistiques")]
 
 
-def _avec_bugs(rapports, bugs):
-    """Paramètres pytest ; les rapports listés dans `bugs` sont marqués échec connu."""
-    return [pytest.param(r, id=r.name, marks=[pytest.mark.xfail(strict=True, reason=bugs[r.name])]
-                         if r.name in bugs else []) for r in rapports]
-
 
 @pytest.mark.parametrize("rapport", STATS, ids=lambda r: r.name)
 def test_statistiques_par_partie(rapport):  # RA-05
@@ -127,11 +122,7 @@ def test_statistiques_par_partie(rapport):  # RA-05
         assert int(l[6]) == sum(data[int(l[0])]["coches"].values())
 
 
-@pytest.mark.parametrize("rapport", _avec_bugs(STATS, {
-    "statistiques_2026-11-11_orange.md":
-        "BUG-05 : la répartition par dizaine est calculée sur 1-10, 11-20... 81-90 "
-        "alors que les colonnes annoncent 1-9, 10s... 80-90",
-}))
+@pytest.mark.parametrize("rapport", STATS, ids=lambda r: r.name)
 def test_statistiques_dizaines(rapport):  # RA-06
     data = _donnees(_base(rapport))
     _, lignes = _tableau(rapport.read_text(), "Partie", "1-9")
@@ -168,10 +159,7 @@ def test_frequence_des_numeros(rapport):  # RA-08
         assert [int(x) for x in l[2].split(",")] == attendu
 
 
-@pytest.mark.parametrize("rapport", _avec_bugs(RAPPORTS, {
-    "rapport_final_2026-11-11_orange.md":
-        "BUG-06 : le rapport final dit statistiques_2026-11-11_orange.md périmé alors qu'il couvre les 10 parties",
-}))
+@pytest.mark.parametrize("rapport", RAPPORTS, ids=[r.name for r in RAPPORTS])
 def test_pas_de_mention_de_fichier_perime(rapport):  # RA-09
     """Un rapport ne doit pas déclarer périmé un fichier qui est désormais à jour."""
     md = rapport.read_text()

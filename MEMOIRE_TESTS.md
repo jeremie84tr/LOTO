@@ -3,7 +3,7 @@
 Liste de tout ce qu'il faut tester dans l'application, avec le statut de chaque point.
 Les identifiants (`NP-xx`, `SU-xx`…) sont repris en commentaire dans les tests (`tests/`).
 
-Dernière exécution : 13/11/2026, `python -m pytest` : **106 réussis, 6 échecs connus (xfail), 0 échec**.
+Dernière exécution : 13/11/2026, `python -m pytest` : **113 réussis, 0 échec connu, 0 échec**.
 
 Légende des statuts :
 
@@ -54,8 +54,8 @@ La CI (`.github/workflows/tests.yml`) lance la suite à chaque push sur toutes l
 | NP-18 | Refuse une date invalide sans créer de dossier | ✅ OK |
 | NP-19 | Arguments manquants : sortie en erreur (code 2) | ✅ OK |
 | NP-20 | Le script se lance en sous-processus (`--help`) | ✅ OK |
-| NP-21 | Refuse un lieu qui ne contient aucune lettre ni chiffre | ❌ Échec connu (BUG-01) |
-| NP-22 | Refuse un nombre de cartons négatif | ❌ Échec connu (BUG-02) |
+| NP-21 | Refuse un lieu qui ne contient aucune lettre ni chiffre | ✅ OK (BUG-01 corrigé) |
+| NP-22 | Refuse un nombre de cartons négatif | ✅ OK (BUG-02 corrigé) |
 
 ## 2. `suivi.py` : saisie du tirage et état des cartons (`tests/test_suivi.py`)
 
@@ -72,8 +72,9 @@ La CI (`.github/workflows/tests.yml`) lance la suite à chaque push sur toutes l
 | SU-09 | Cartons affichés dans l'ordre de leur numéro | ✅ OK |
 | SU-10 | Le tirage est conservé d'un appel à l'autre | ✅ OK |
 | SU-11 | Sur une vraie partie (copie), affichage correct sans modifier le fichier | ✅ OK |
-| SU-12 | Un argument non numérique est ignoré avec un message, sans planter | ❌ Échec connu (BUG-03) |
-| SU-13 | Dossier absent : message clair au lieu d'une trace d'erreur Python | ❌ Échec connu (BUG-04) |
+| SU-12 | Un argument non numérique est ignoré avec un message (« Ignoré (pas un numéro) »), sans planter | ✅ OK (BUG-03 corrigé) |
+| SU-13 | Dossier absent : message clair au lieu d'une trace d'erreur Python | ✅ OK (BUG-04 corrigé) |
+| SU-14 | Sans argument : affiche l'usage, sans trace d'erreur | ✅ OK |
 
 ## 3. Intégrité des données `parties/` (`tests/test_donnees.py`)
 
@@ -103,10 +104,10 @@ Les chiffres des rapports `*_AAAA-MM-JJ_lieu.md` sont recalculés à partir des 
 | RA-03 | Tableau d'avancement : dossier, numéros tirés, dernier tiré, carton plein | ✅ OK |
 | RA-04 | Cumul des cases cochées par carton, trié par ordre décroissant | ✅ OK |
 | RA-05 | Statistiques par partie : nombre, dernier, pairs, ≤ 45, moyenne, cases cochées | ✅ OK |
-| RA-06 | Répartition par dizaine | ❌ Échec connu (BUG-05) |
+| RA-06 | Répartition par dizaine | ✅ OK (BUG-05 corrigé) |
 | RA-07 | Cases cochées par carton et par partie, avec total | ✅ OK |
 | RA-08 | Listes « sortis dans N parties » | ✅ OK |
-| RA-09 | Aucun rapport ne déclare périmé un fichier qui est à jour | ❌ Échec connu (BUG-06) sur `rapport_final` |
+| RA-09 | Aucun rapport ne déclare périmé un fichier qui est à jour | ✅ OK (BUG-06 corrigé) |
 
 ## 5. Points non automatisés
 
@@ -119,14 +120,18 @@ Les chiffres des rapports `*_AAAA-MM-JJ_lieu.md` sont recalculés à partir des 
 
 ## Défauts connus
 
-| ID | Fichier | Description | Test |
-|---|---|---|---|
-| BUG-01 | `nouvelle_partie.py` | Un lieu comme `"!!!"` donne un dossier `2026-11-20_` sans nom de lieu | NP-21 |
-| BUG-02 | `nouvelle_partie.py` | `--cartons -3` est accepté et crée une partie sans carton | NP-22 |
-| BUG-03 | `suivi.py` | `./suivi.py dossier douze` plante (`ValueError`) | SU-12 |
-| BUG-04 | `suivi.py` | Dossier absent ou oublié : trace d'erreur Python au lieu d'un message d'usage | SU-13 |
-| BUG-05 | `statistiques_2026-11-11_orange.md` | La répartition par dizaine compte 1-10, 11-20, …, 81-90 alors que les colonnes annoncent 1-9, 10s, …, 80-90 (ex. partie 1 : 7 dans « 1-9 » au lieu de 6) | RA-06 |
-| BUG-06 | `rapport_final_2026-11-11_orange.md` | Dit que `statistiques_2026-11-11_orange.md` est périmé (parties 1 à 4) alors qu'il couvre maintenant les 10 parties | RA-09 |
+Aucun.
+
+## Défauts corrigés (13/11/2026)
+
+| ID | Fichier | Défaut | Correction | Test |
+|---|---|---|---|---|
+| BUG-01 | `nouvelle_partie.py` | Un lieu comme `"!!!"` donne un dossier `2026-11-20_` sans nom de lieu | Refus avec message, aucun dossier créé | NP-21 |
+| BUG-02 | `nouvelle_partie.py` | `--cartons -3` est accepté et crée une partie sans carton | Refus avec message, aucun dossier créé | NP-22 |
+| BUG-03 | `suivi.py` | `./suivi.py dossier douze` plante (`ValueError`) | Argument ignoré avec le message « Ignoré (pas un numéro) » | SU-12 |
+| BUG-04 | `suivi.py` | Dossier absent ou oublié : trace d'erreur Python au lieu d'un message d'usage | Message « Partie introuvable » ou usage, code de sortie 1 | SU-13 |
+| BUG-05 | `statistiques_2026-11-11_orange.md` | La répartition par dizaine compte 1-10, 11-20, …, 81-90 alors que les colonnes annoncent 1-9, 10s, …, 80-90 (ex. partie 1 : 7 dans « 1-9 » au lieu de 6) | Tableau recalculé avec les plages annoncées | RA-06 |
+| BUG-06 | `rapport_final_2026-11-11_orange.md` | Dit que `statistiques_2026-11-11_orange.md` est périmé (parties 1 à 4) alors qu'il couvre maintenant les 10 parties | Mention retirée | RA-09 |
 
 ## Mise à jour de cette mémoire
 
