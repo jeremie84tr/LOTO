@@ -1,0 +1,3426 @@
+[
+ {
+  "id": "D050F961-68E2-573A-8EE6-F1EBB196365A",
+  "date": "2026-12-05T18:00:00Z",
+  "lieu": "Salle des fêtes",
+  "notes": "Données d'exemple : vous pouvez supprimer cette soirée.",
+  "deroulementParDefaut": [
+   "quine",
+   "quine",
+   "doubleQuine",
+   "cartonPlein"
+  ],
+  "cartons": [
+   {
+    "id": "001",
+    "planche": "A",
+    "grille": [
+     [
+      3,
+      null,
+      23,
+      35,
+      null,
+      null,
+      61,
+      70,
+      null
+     ],
+     [
+      null,
+      18,
+      null,
+      36,
+      47,
+      null,
+      63,
+      null,
+      82
+     ],
+     [
+      9,
+      19,
+      null,
+      null,
+      null,
+      59,
+      66,
+      null,
+      83
+     ]
+    ]
+   },
+   {
+    "id": "002",
+    "planche": "A",
+    "grille": [
+     [
+      5,
+      15,
+      21,
+      null,
+      null,
+      54,
+      65,
+      null,
+      null
+     ],
+     [
+      7,
+      null,
+      null,
+      32,
+      40,
+      null,
+      68,
+      null,
+      90
+     ],
+     [
+      null,
+      null,
+      22,
+      38,
+      null,
+      58,
+      69,
+      70,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "003",
+    "planche": "A",
+    "grille": [
+     [
+      null,
+      15,
+      null,
+      null,
+      46,
+      52,
+      null,
+      73,
+      85
+     ],
+     [
+      null,
+      18,
+      null,
+      37,
+      null,
+      null,
+      63,
+      75,
+      86
+     ],
+     [
+      7,
+      19,
+      25,
+      null,
+      null,
+      55,
+      null,
+      77,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "004",
+    "planche": "A",
+    "grille": [
+     [
+      null,
+      null,
+      20,
+      32,
+      null,
+      null,
+      65,
+      72,
+      82
+     ],
+     [
+      3,
+      null,
+      29,
+      34,
+      null,
+      54,
+      null,
+      null,
+      87
+     ],
+     [
+      null,
+      19,
+      null,
+      39,
+      42,
+      null,
+      68,
+      null,
+      89
+     ]
+    ]
+   },
+   {
+    "id": "005",
+    "planche": "A",
+    "grille": [
+     [
+      1,
+      12,
+      null,
+      31,
+      null,
+      null,
+      66,
+      null,
+      80
+     ],
+     [
+      4,
+      null,
+      23,
+      null,
+      47,
+      null,
+      null,
+      77,
+      88
+     ],
+     [
+      7,
+      13,
+      27,
+      null,
+      49,
+      59,
+      null,
+      null,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "006",
+    "planche": "A",
+    "grille": [
+     [
+      3,
+      16,
+      20,
+      null,
+      44,
+      null,
+      null,
+      73,
+      null
+     ],
+     [
+      null,
+      18,
+      24,
+      null,
+      47,
+      54,
+      64,
+      null,
+      null
+     ],
+     [
+      9,
+      null,
+      null,
+      38,
+      49,
+      null,
+      66,
+      null,
+      89
+     ]
+    ]
+   },
+   {
+    "id": "007",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      11,
+      29,
+      32,
+      null,
+      50,
+      null,
+      null,
+      80
+     ],
+     [
+      null,
+      15,
+      null,
+      34,
+      null,
+      null,
+      68,
+      73,
+      84
+     ],
+     [
+      3,
+      17,
+      null,
+      null,
+      48,
+      null,
+      null,
+      75,
+      87
+     ]
+    ]
+   },
+   {
+    "id": "008",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      null,
+      36,
+      null,
+      50,
+      60,
+      74,
+      81
+     ],
+     [
+      4,
+      14,
+      null,
+      37,
+      null,
+      null,
+      61,
+      77,
+      null
+     ],
+     [
+      null,
+      null,
+      29,
+      null,
+      47,
+      54,
+      64,
+      null,
+      85
+     ]
+    ]
+   },
+   {
+    "id": "009",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      null,
+      35,
+      40,
+      50,
+      65,
+      73,
+      null
+     ],
+     [
+      6,
+      10,
+      24,
+      null,
+      46,
+      null,
+      null,
+      74,
+      null
+     ],
+     [
+      null,
+      15,
+      26,
+      null,
+      47,
+      null,
+      66,
+      null,
+      83
+     ]
+    ]
+   },
+   {
+    "id": "010",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      29,
+      null,
+      40,
+      56,
+      null,
+      74,
+      80
+     ],
+     [
+      2,
+      14,
+      null,
+      34,
+      null,
+      59,
+      null,
+      75,
+      null
+     ],
+     [
+      null,
+      15,
+      null,
+      36,
+      null,
+      null,
+      65,
+      78,
+      90
+     ]
+    ]
+   },
+   {
+    "id": "011",
+    "planche": "B",
+    "grille": [
+     [
+      7,
+      null,
+      21,
+      33,
+      null,
+      null,
+      61,
+      73,
+      null
+     ],
+     [
+      null,
+      10,
+      null,
+      null,
+      47,
+      56,
+      62,
+      null,
+      88
+     ],
+     [
+      9,
+      15,
+      null,
+      38,
+      null,
+      null,
+      null,
+      75,
+      89
+     ]
+    ]
+   },
+   {
+    "id": "012",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      null,
+      35,
+      46,
+      null,
+      62,
+      75,
+      84
+     ],
+     [
+      5,
+      12,
+      null,
+      null,
+      48,
+      50,
+      63,
+      null,
+      null
+     ],
+     [
+      null,
+      13,
+      26,
+      null,
+      49,
+      null,
+      66,
+      77,
+      null
+     ]
+    ]
+   }
+  ],
+  "parties": [
+   {
+    "id": "18CF9E2E-A072-5E0F-B8F4-869871E571A5",
+    "numero": 1,
+    "tirage": [
+     71,
+     18,
+     29,
+     36,
+     72,
+     41,
+     21,
+     45,
+     30,
+     48,
+     5,
+     64,
+     55,
+     89,
+     46,
+     51,
+     69,
+     52,
+     80,
+     6,
+     19,
+     25,
+     86,
+     23,
+     24,
+     54,
+     44,
+     13,
+     2,
+     27,
+     58,
+     15,
+     8,
+     63,
+     67,
+     12,
+     32,
+     40,
+     33,
+     7,
+     43,
+     22,
+     78,
+     76,
+     68,
+     61,
+     20,
+     83,
+     37,
+     14,
+     74,
+     49,
+     35,
+     57,
+     84,
+     82,
+     65,
+     42,
+     1,
+     31,
+     26,
+     87,
+     34,
+     73,
+     56,
+     77,
+     50,
+     75
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "863CFB04-E54C-5E78-8992-6B6875F4A88E",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 20,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "35C73074-0AC9-5322-B5BE-5DA7438EA4D5",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 31,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "BA9B3040-59F5-560F-8323-A312965C0741",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 51,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "A88B0F96-E583-575F-9403-1D860A8A5735",
+      "type": "cartonPlein",
+      "lot": "Tablette",
+      "gagneeApres": 68,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "21B530F2-C4DF-59EE-856C-DC8C67483063",
+    "numero": 2,
+    "tirage": [
+     9,
+     51,
+     34,
+     63,
+     17,
+     72,
+     44,
+     58,
+     33,
+     73,
+     14,
+     20,
+     88,
+     4,
+     53,
+     30,
+     31,
+     55,
+     36,
+     8,
+     77,
+     11,
+     15,
+     40,
+     19,
+     83,
+     59,
+     16,
+     90,
+     48,
+     24,
+     37,
+     69,
+     66,
+     64,
+     76,
+     54,
+     13,
+     3,
+     5,
+     6,
+     10,
+     68,
+     79,
+     7,
+     41,
+     29,
+     71,
+     26,
+     47,
+     21,
+     60,
+     70,
+     56,
+     18,
+     67,
+     61,
+     1,
+     39,
+     65,
+     82,
+     2
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "29028DB8-0717-56D5-8D3A-FECD6557DFCD",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 31,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "D943675F-6989-568E-8462-099D959537D4",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 32,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "1BA0D48D-5D40-5F3E-AC63-73D082DC2227",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 50,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "52D85548-831A-5B5E-8179-796B0CE1F020",
+      "type": "cartonPlein",
+      "lot": "Vélo électrique",
+      "gagneeApres": 62,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "EF75968D-5771-559C-90E4-A7F1CE14C53D",
+    "numero": 3,
+    "tirage": [
+     90,
+     74,
+     79,
+     26,
+     8,
+     51,
+     21,
+     86,
+     33,
+     73,
+     56,
+     23,
+     89,
+     54,
+     67,
+     37,
+     50,
+     78,
+     15,
+     63,
+     76,
+     49,
+     62,
+     14,
+     85,
+     29,
+     75,
+     24,
+     19,
+     70,
+     17,
+     27,
+     25,
+     57,
+     61,
+     41,
+     36,
+     77,
+     45,
+     28,
+     31,
+     69,
+     16,
+     44,
+     20,
+     55,
+     43,
+     4,
+     59,
+     10,
+     1,
+     13,
+     48,
+     5,
+     88,
+     39,
+     87,
+     84,
+     46,
+     65,
+     83,
+     2,
+     42,
+     80,
+     53,
+     22,
+     64,
+     11,
+     82,
+     72
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "99FBC544-FC34-5641-A6B9-99478C109DF9",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 29,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "3313F07E-4168-5F58-BC1E-0DB74DECC7EB",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 39,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "502308AF-5933-5EDD-BA86-FBE3F2EBFBD8",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 49,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "47348FDD-965B-5BB3-A7E7-CABF2F7A9A1B",
+      "type": "cartonPlein",
+      "lot": "Vélo électrique",
+      "gagneeApres": 70,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "D0C775AB-DE40-5660-A0A1-6D2C0885C254",
+    "numero": 4,
+    "tirage": [
+     39,
+     25,
+     60,
+     36,
+     69,
+     16,
+     43,
+     24,
+     74,
+     81,
+     1,
+     32,
+     72,
+     52,
+     20,
+     53,
+     49,
+     63,
+     48,
+     61,
+     29,
+     78,
+     5,
+     3,
+     11,
+     27,
+     40,
+     41,
+     85,
+     34,
+     37,
+     68,
+     89,
+     44,
+     86,
+     54,
+     21,
+     42,
+     38,
+     50,
+     17,
+     23,
+     66,
+     59,
+     6,
+     33,
+     84,
+     13,
+     57,
+     73,
+     15,
+     90,
+     4,
+     14,
+     88,
+     7,
+     67,
+     65,
+     80,
+     9,
+     71,
+     30,
+     51,
+     26,
+     64,
+     70,
+     10
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "FEC019A9-0DD0-528B-9062-304267CA2074",
+      "type": "quine",
+      "lot": "Cafetière",
+      "gagneeApres": 13,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "27D19C2B-6DCE-5733-A763-41832C0A5266",
+      "type": "quine",
+      "lot": "Jambon sec",
+      "gagneeApres": 25,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "A070E62A-6769-5B83-9200-63E18D421AA2",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 37,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "A81BCCFF-FDBE-5820-90E9-C78BDC32D3ED",
+      "type": "cartonPlein",
+      "lot": "Tablette",
+      "gagneeApres": 67,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "B9066F8B-D6BF-5A5A-A404-2860D91CC98A",
+    "numero": 5,
+    "tirage": [
+     47,
+     25,
+     83,
+     6,
+     52,
+     15,
+     88,
+     13,
+     26,
+     2,
+     36,
+     35,
+     32,
+     75,
+     80,
+     8,
+     62,
+     33,
+     67,
+     19,
+     23,
+     14,
+     82,
+     28,
+     54,
+     43,
+     17,
+     22,
+     40,
+     90,
+     30,
+     39,
+     12,
+     86,
+     84,
+     51,
+     78,
+     4,
+     21,
+     49,
+     69,
+     57,
+     89,
+     20,
+     37,
+     81,
+     3,
+     58,
+     5,
+     1,
+     79,
+     74,
+     38,
+     71,
+     46,
+     55,
+     18,
+     61,
+     31,
+     7,
+     70,
+     56,
+     66,
+     60,
+     44
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "29C023FF-7316-510A-A609-1F4AECD47C6A",
+      "type": "quine",
+      "lot": "Jambon sec",
+      "gagneeApres": 20,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "BACA3CBC-93AF-5D45-88E9-9B93C1716320",
+      "type": "quine",
+      "lot": "Jambon sec",
+      "gagneeApres": 26,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "3E5A56C4-F9F8-51D7-AD4A-33C106431838",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 43,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "4D3F1069-CEC0-5185-B1CD-7E4A3D4C8465",
+      "type": "cartonPlein",
+      "lot": "Tablette",
+      "gagneeApres": 65,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "61234B46-BCDD-57A5-98F6-46DF33B1C292",
+    "numero": 6,
+    "tirage": [
+     82,
+     5,
+     1,
+     28,
+     32,
+     81,
+     19,
+     74,
+     88,
+     12,
+     50,
+     41,
+     90,
+     71,
+     68,
+     42,
+     66,
+     52,
+     75,
+     25,
+     26,
+     18,
+     4,
+     89,
+     3,
+     20,
+     65,
+     17
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "A742F501-267B-579B-98E9-B19C40114593",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 20,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "3D24095E-6D98-52CB-BE63-E0215C2ECE43",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €"
+     },
+     {
+      "id": "7F3C931B-2954-5690-9388-889401CA482D",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine"
+     },
+     {
+      "id": "DC91D0D7-2601-5309-A365-5C44C4007B2A",
+      "type": "cartonPlein",
+      "lot": "Téléviseur"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "DEAA2211-E2FE-53BB-AA22-19FBC71CA40B",
+  "date": "2026-11-21T18:00:00Z",
+  "lieu": "Foyer rural",
+  "notes": "Données d'exemple : vous pouvez supprimer cette soirée.",
+  "deroulementParDefaut": [
+   "quine",
+   "quine",
+   "doubleQuine",
+   "cartonPlein"
+  ],
+  "cartons": [
+   {
+    "id": "001",
+    "planche": "A",
+    "grille": [
+     [
+      3,
+      null,
+      23,
+      35,
+      null,
+      null,
+      61,
+      70,
+      null
+     ],
+     [
+      null,
+      18,
+      null,
+      36,
+      47,
+      null,
+      63,
+      null,
+      82
+     ],
+     [
+      9,
+      19,
+      null,
+      null,
+      null,
+      59,
+      66,
+      null,
+      83
+     ]
+    ]
+   },
+   {
+    "id": "002",
+    "planche": "A",
+    "grille": [
+     [
+      5,
+      15,
+      21,
+      null,
+      null,
+      54,
+      65,
+      null,
+      null
+     ],
+     [
+      7,
+      null,
+      null,
+      32,
+      40,
+      null,
+      68,
+      null,
+      90
+     ],
+     [
+      null,
+      null,
+      22,
+      38,
+      null,
+      58,
+      69,
+      70,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "003",
+    "planche": "A",
+    "grille": [
+     [
+      null,
+      15,
+      null,
+      null,
+      46,
+      52,
+      null,
+      73,
+      85
+     ],
+     [
+      null,
+      18,
+      null,
+      37,
+      null,
+      null,
+      63,
+      75,
+      86
+     ],
+     [
+      7,
+      19,
+      25,
+      null,
+      null,
+      55,
+      null,
+      77,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "004",
+    "planche": "A",
+    "grille": [
+     [
+      null,
+      null,
+      20,
+      32,
+      null,
+      null,
+      65,
+      72,
+      82
+     ],
+     [
+      3,
+      null,
+      29,
+      34,
+      null,
+      54,
+      null,
+      null,
+      87
+     ],
+     [
+      null,
+      19,
+      null,
+      39,
+      42,
+      null,
+      68,
+      null,
+      89
+     ]
+    ]
+   },
+   {
+    "id": "005",
+    "planche": "A",
+    "grille": [
+     [
+      1,
+      12,
+      null,
+      31,
+      null,
+      null,
+      66,
+      null,
+      80
+     ],
+     [
+      4,
+      null,
+      23,
+      null,
+      47,
+      null,
+      null,
+      77,
+      88
+     ],
+     [
+      7,
+      13,
+      27,
+      null,
+      49,
+      59,
+      null,
+      null,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "006",
+    "planche": "A",
+    "grille": [
+     [
+      3,
+      16,
+      20,
+      null,
+      44,
+      null,
+      null,
+      73,
+      null
+     ],
+     [
+      null,
+      18,
+      24,
+      null,
+      47,
+      54,
+      64,
+      null,
+      null
+     ],
+     [
+      9,
+      null,
+      null,
+      38,
+      49,
+      null,
+      66,
+      null,
+      89
+     ]
+    ]
+   },
+   {
+    "id": "007",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      11,
+      29,
+      32,
+      null,
+      50,
+      null,
+      null,
+      80
+     ],
+     [
+      null,
+      15,
+      null,
+      34,
+      null,
+      null,
+      68,
+      73,
+      84
+     ],
+     [
+      3,
+      17,
+      null,
+      null,
+      48,
+      null,
+      null,
+      75,
+      87
+     ]
+    ]
+   },
+   {
+    "id": "008",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      null,
+      36,
+      null,
+      50,
+      60,
+      74,
+      81
+     ],
+     [
+      4,
+      14,
+      null,
+      37,
+      null,
+      null,
+      61,
+      77,
+      null
+     ],
+     [
+      null,
+      null,
+      29,
+      null,
+      47,
+      54,
+      64,
+      null,
+      85
+     ]
+    ]
+   },
+   {
+    "id": "009",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      null,
+      35,
+      40,
+      50,
+      65,
+      73,
+      null
+     ],
+     [
+      6,
+      10,
+      24,
+      null,
+      46,
+      null,
+      null,
+      74,
+      null
+     ],
+     [
+      null,
+      15,
+      26,
+      null,
+      47,
+      null,
+      66,
+      null,
+      83
+     ]
+    ]
+   },
+   {
+    "id": "010",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      29,
+      null,
+      40,
+      56,
+      null,
+      74,
+      80
+     ],
+     [
+      2,
+      14,
+      null,
+      34,
+      null,
+      59,
+      null,
+      75,
+      null
+     ],
+     [
+      null,
+      15,
+      null,
+      36,
+      null,
+      null,
+      65,
+      78,
+      90
+     ]
+    ]
+   },
+   {
+    "id": "011",
+    "planche": "B",
+    "grille": [
+     [
+      7,
+      null,
+      21,
+      33,
+      null,
+      null,
+      61,
+      73,
+      null
+     ],
+     [
+      null,
+      10,
+      null,
+      null,
+      47,
+      56,
+      62,
+      null,
+      88
+     ],
+     [
+      9,
+      15,
+      null,
+      38,
+      null,
+      null,
+      null,
+      75,
+      89
+     ]
+    ]
+   },
+   {
+    "id": "012",
+    "planche": "B",
+    "grille": [
+     [
+      null,
+      null,
+      null,
+      35,
+      46,
+      null,
+      62,
+      75,
+      84
+     ],
+     [
+      5,
+      12,
+      null,
+      null,
+      48,
+      50,
+      63,
+      null,
+      null
+     ],
+     [
+      null,
+      13,
+      26,
+      null,
+      49,
+      null,
+      66,
+      77,
+      null
+     ]
+    ]
+   }
+  ],
+  "parties": [
+   {
+    "id": "EE005250-0E21-5DFF-86D2-22D8A28A77EF",
+    "numero": 1,
+    "tirage": [
+     51,
+     54,
+     67,
+     65,
+     2,
+     89,
+     62,
+     64,
+     74,
+     69,
+     28,
+     59,
+     83,
+     25,
+     73,
+     6,
+     55,
+     77,
+     20,
+     8,
+     12,
+     46,
+     86,
+     48,
+     7,
+     26,
+     78,
+     24,
+     42,
+     1,
+     53,
+     34,
+     22,
+     15,
+     14,
+     21,
+     71,
+     44,
+     57,
+     19,
+     32,
+     82,
+     63,
+     52,
+     47,
+     16,
+     88,
+     3,
+     37,
+     49,
+     84,
+     45,
+     40,
+     76,
+     13,
+     85,
+     90,
+     72,
+     17,
+     79,
+     70,
+     56,
+     9,
+     33,
+     5,
+     81
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "8C51B96C-B7AC-59F6-89FB-E03653CB01CF",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 23,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "C9B0D85C-96A3-5D5B-9626-E1C7B49F13D9",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 27,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "05BDBEA3-571E-5FBB-B902-42BCFA02AACB",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 38,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "C289EF10-59A3-559E-9C57-80E75FFE8D1A",
+      "type": "cartonPlein",
+      "lot": "Vélo électrique",
+      "gagneeApres": 66,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "40E234E5-9B3F-579A-A599-A5E6CADF69BE",
+    "numero": 2,
+    "tirage": [
+     57,
+     30,
+     61,
+     15,
+     23,
+     13,
+     68,
+     58,
+     5,
+     90,
+     62,
+     37,
+     71,
+     20,
+     16,
+     6,
+     24,
+     77,
+     66,
+     64,
+     41,
+     38,
+     49,
+     67,
+     11,
+     48,
+     1,
+     74,
+     12,
+     52,
+     42,
+     86,
+     27,
+     34,
+     72,
+     29,
+     70,
+     4,
+     19,
+     46,
+     80,
+     84,
+     39,
+     26,
+     69,
+     50,
+     56,
+     33,
+     28,
+     17,
+     79,
+     47,
+     31,
+     21,
+     25,
+     36,
+     81,
+     78,
+     45,
+     88,
+     60,
+     51
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "9B44205C-77D4-57C7-8EA3-8D98CC99034C",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 21,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "615644C2-E3A6-51C5-B0E7-027CB945879F",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 24,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "BD019528-AECF-5185-8C12-57D1D78AC84E",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 56,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "0FD6C439-F1C5-5744-9CD9-16B5AB212EF1",
+      "type": "cartonPlein",
+      "lot": "Téléviseur",
+      "gagneeApres": 62,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "1CCC7A0C-8F03-5196-B80C-58B9DDE4BC30",
+    "numero": 3,
+    "tirage": [
+     90,
+     19,
+     67,
+     15,
+     7,
+     85,
+     56,
+     5,
+     74,
+     32,
+     33,
+     3,
+     42,
+     68,
+     51,
+     57,
+     59,
+     71,
+     22,
+     44,
+     1,
+     54,
+     35,
+     81,
+     78,
+     13,
+     20,
+     4,
+     88,
+     70,
+     73,
+     80,
+     38,
+     26,
+     87,
+     61,
+     63,
+     6,
+     2,
+     62,
+     79,
+     11,
+     21,
+     18,
+     47,
+     12,
+     75,
+     41,
+     83,
+     55,
+     10,
+     37,
+     72,
+     31,
+     29,
+     45,
+     49,
+     23,
+     9,
+     16,
+     50,
+     48,
+     36,
+     60,
+     25,
+     76
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "3B9F5ACE-B2F0-5C58-8113-3E9D38CE5951",
+      "type": "quine",
+      "lot": "Jambon sec",
+      "gagneeApres": 27,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "EC38DE8D-CC5E-57F8-A88B-6A18F0CFC19B",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 30,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "B7E1DDB8-6C26-5C74-A58A-789FBB8FFD68",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 51,
+      "gagnant": {
+       "parNous": true,
+       "lignes": [
+        0,
+        1
+       ],
+       "cartonID": "011"
+      }
+     },
+     {
+      "id": "F755FE51-AFA1-51BD-8FE7-7B62E57AA32A",
+      "type": "cartonPlein",
+      "lot": "Week-end pour deux",
+      "gagneeApres": 66,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "4A2D3699-B641-5FEE-8703-D34AD0B82D06",
+    "numero": 4,
+    "tirage": [
+     18,
+     87,
+     37,
+     16,
+     90,
+     2,
+     23,
+     34,
+     38,
+     17,
+     21,
+     59,
+     61,
+     41,
+     53,
+     73,
+     33,
+     56,
+     64,
+     49,
+     13,
+     76,
+     27,
+     77,
+     63,
+     80,
+     82,
+     8,
+     12,
+     66,
+     71,
+     79,
+     30,
+     11,
+     72,
+     78,
+     28,
+     88,
+     25,
+     1,
+     6,
+     14,
+     55,
+     60,
+     22,
+     84,
+     85,
+     58,
+     20,
+     3,
+     74,
+     68,
+     83,
+     15,
+     45,
+     29,
+     67,
+     26,
+     46,
+     24,
+     43,
+     44,
+     5,
+     39,
+     54,
+     52,
+     31,
+     35
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "8E72ACE9-7C39-5EBC-A2FF-5538F71B115D",
+      "type": "quine",
+      "lot": "Cafetière",
+      "gagneeApres": 28,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "F8C1CED6-F206-52D3-B432-8F25B3732E3B",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 30,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "2EFABF9D-A1F3-5CC2-BECE-FF088965046E",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 55,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "01D8C51E-840E-5CAB-ADDF-C9E545F9B32B",
+      "type": "cartonPlein",
+      "lot": "Vélo électrique",
+      "gagneeApres": 68,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "FF731948-5B6B-5D0D-87E0-DA1ABEC7F05E",
+    "numero": 5,
+    "tirage": [
+     90,
+     56,
+     78,
+     64,
+     8,
+     75,
+     45,
+     23,
+     32,
+     31,
+     17,
+     77,
+     37,
+     62,
+     51,
+     55,
+     6,
+     58,
+     84,
+     21,
+     59,
+     79,
+     11,
+     83,
+     69,
+     14,
+     85,
+     27,
+     39,
+     53,
+     67,
+     26,
+     29,
+     68,
+     50,
+     88,
+     54,
+     57,
+     87,
+     2,
+     28,
+     48,
+     18,
+     47,
+     10,
+     9,
+     66,
+     35,
+     41,
+     25,
+     72,
+     44,
+     76,
+     73,
+     81,
+     15,
+     4,
+     20,
+     82,
+     86,
+     74,
+     71,
+     7,
+     5,
+     65
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "ABCE148C-3677-51F1-9D3D-05E02FC084F6",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 29,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "A1726697-7802-5CB5-8E3A-25CCD29AAFD3",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 31,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "F9086EF0-AF6D-5996-B23A-E0C80D89E89D",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 53,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "A5E70179-56E6-55CA-9187-CC60FAD1683B",
+      "type": "cartonPlein",
+      "lot": "Téléviseur",
+      "gagneeApres": 65,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "8550F76C-AB80-5964-982A-E226349E71DE",
+    "numero": 6,
+    "tirage": [
+     44,
+     60,
+     32,
+     10,
+     8,
+     65,
+     51,
+     35,
+     86,
+     25,
+     90,
+     73,
+     78,
+     52,
+     41,
+     54,
+     29,
+     50,
+     68,
+     56,
+     26,
+     82,
+     20,
+     75,
+     30,
+     28,
+     24,
+     48,
+     34,
+     64,
+     4,
+     3,
+     1,
+     23,
+     14,
+     37,
+     31,
+     88,
+     59,
+     71,
+     69,
+     9,
+     40,
+     77,
+     19,
+     81,
+     38,
+     72,
+     83,
+     43,
+     89,
+     63,
+     84,
+     5,
+     18,
+     66,
+     80,
+     79,
+     22,
+     61,
+     13,
+     45,
+     87,
+     55,
+     27,
+     11
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "CE89AE5E-8C3A-59F9-B081-84C8083CD769",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 32,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "5DDE84F2-B9AF-54A3-88A2-C6EADBBF9A9F",
+      "type": "quine",
+      "lot": "Jambon sec",
+      "gagneeApres": 33,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "7FEB3B67-C736-5B23-BCA5-F31CD181ADED",
+      "type": "doubleQuine",
+      "lot": "Trottinette",
+      "gagneeApres": 48,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "8DE1D748-AD45-5890-8F7B-F4345CE50A8F",
+      "type": "cartonPlein",
+      "lot": "Téléviseur",
+      "gagneeApres": 66,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "B764FB49-A1FD-575A-9756-DEAA93983F53",
+    "numero": 7,
+    "tirage": [
+     42,
+     43,
+     73,
+     87,
+     88,
+     79,
+     66,
+     44,
+     22,
+     36,
+     52,
+     1,
+     35,
+     28,
+     6,
+     11,
+     62,
+     68,
+     3,
+     12,
+     58,
+     17,
+     82,
+     56,
+     37,
+     81,
+     54,
+     46,
+     78,
+     57,
+     40,
+     48,
+     16,
+     53,
+     67,
+     24,
+     74,
+     38,
+     84,
+     72,
+     29,
+     26,
+     8,
+     60,
+     39,
+     7,
+     85,
+     41,
+     45,
+     65,
+     50,
+     4,
+     19,
+     69,
+     75,
+     27,
+     47,
+     34,
+     33,
+     71,
+     70,
+     23,
+     5,
+     89,
+     10
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "CEDC55E0-49D3-58FC-982A-A6B55B517126",
+      "type": "quine",
+      "lot": "Cafetière",
+      "gagneeApres": 19,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "8D40ACC0-CCE1-5BA2-8B69-52E0076CC8D5",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 30,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "1CE709D8-3A94-5B7E-9D77-A7EA75E9481F",
+      "type": "doubleQuine",
+      "lot": "Trottinette",
+      "gagneeApres": 38,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "818A64A5-9CEE-53BC-A25A-46FC45C3F379",
+      "type": "cartonPlein",
+      "lot": "Week-end pour deux",
+      "gagneeApres": 65,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "0360CFB7-D9C8-58DD-9D15-E7E161087AC7",
+    "numero": 8,
+    "tirage": [
+     32,
+     82,
+     10,
+     14,
+     74,
+     11,
+     2,
+     89,
+     30,
+     15,
+     66,
+     34,
+     22,
+     84,
+     48,
+     18,
+     81,
+     60,
+     25,
+     47,
+     21,
+     63,
+     7,
+     28,
+     35,
+     19,
+     68,
+     45,
+     85,
+     33,
+     46,
+     73,
+     88,
+     3,
+     38,
+     36,
+     65,
+     42,
+     62,
+     1,
+     8,
+     24,
+     57,
+     17,
+     20,
+     37,
+     56,
+     76,
+     5,
+     58,
+     43,
+     61,
+     77,
+     40,
+     75,
+     41,
+     86,
+     70,
+     59,
+     52,
+     71,
+     80,
+     51,
+     87
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "096C012A-6F7E-515E-A22E-4B8E9AEF1E33",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 29,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "BDF870BD-15D0-55DC-B3AB-4EB25FD41836",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 32,
+      "gagnant": {
+       "parNous": true,
+       "lignes": [
+        1
+       ],
+       "cartonID": "007"
+      }
+     },
+     {
+      "id": "FB5086B0-66A0-5745-8FAD-560B4DF1C3F7",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 47,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "4944A0F2-251D-58C4-ADF2-0BE825CB4719",
+      "type": "cartonPlein",
+      "lot": "Tablette",
+      "gagneeApres": 64,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "82D10140-988B-5A16-9DF7-6454792401E9",
+  "date": "2026-10-17T18:00:00Z",
+  "lieu": "Loto de l'école",
+  "notes": "Données d'exemple : vous pouvez supprimer cette soirée.",
+  "deroulementParDefaut": [
+   "quine",
+   "doubleQuine",
+   "cartonPlein"
+  ],
+  "cartons": [
+   {
+    "id": "001",
+    "planche": "A",
+    "grille": [
+     [
+      7,
+      12,
+      null,
+      30,
+      null,
+      55,
+      null,
+      76,
+      null
+     ],
+     [
+      null,
+      15,
+      22,
+      null,
+      null,
+      59,
+      null,
+      78,
+      88
+     ],
+     [
+      null,
+      17,
+      26,
+      null,
+      49,
+      null,
+      69,
+      79,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "002",
+    "planche": "A",
+    "grille": [
+     [
+      2,
+      11,
+      27,
+      null,
+      40,
+      null,
+      62,
+      null,
+      null
+     ],
+     [
+      5,
+      14,
+      null,
+      null,
+      null,
+      50,
+      63,
+      null,
+      86
+     ],
+     [
+      null,
+      17,
+      29,
+      30,
+      null,
+      54,
+      null,
+      71,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "003",
+    "planche": "A",
+    "grille": [
+     [
+      null,
+      null,
+      22,
+      null,
+      41,
+      50,
+      null,
+      73,
+      86
+     ],
+     [
+      null,
+      null,
+      null,
+      33,
+      46,
+      51,
+      60,
+      null,
+      90
+     ],
+     [
+      9,
+      18,
+      26,
+      38,
+      null,
+      56,
+      null,
+      null,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "004",
+    "planche": "A",
+    "grille": [
+     [
+      null,
+      12,
+      null,
+      33,
+      null,
+      51,
+      null,
+      73,
+      81
+     ],
+     [
+      5,
+      13,
+      25,
+      34,
+      null,
+      null,
+      null,
+      79,
+      null
+     ],
+     [
+      null,
+      null,
+      27,
+      38,
+      48,
+      55,
+      63,
+      null,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "005",
+    "planche": "A",
+    "grille": [
+     [
+      2,
+      null,
+      null,
+      null,
+      null,
+      54,
+      64,
+      75,
+      80
+     ],
+     [
+      3,
+      12,
+      22,
+      null,
+      48,
+      null,
+      null,
+      79,
+      null
+     ],
+     [
+      4,
+      15,
+      28,
+      34,
+      null,
+      null,
+      65,
+      null,
+      null
+     ]
+    ]
+   },
+   {
+    "id": "006",
+    "planche": "A",
+    "grille": [
+     [
+      7,
+      17,
+      null,
+      33,
+      null,
+      null,
+      62,
+      73,
+      null
+     ],
+     [
+      null,
+      null,
+      27,
+      36,
+      44,
+      null,
+      65,
+      null,
+      83
+     ],
+     [
+      9,
+      null,
+      null,
+      null,
+      null,
+      57,
+      66,
+      79,
+      87
+     ]
+    ]
+   }
+  ],
+  "parties": [
+   {
+    "id": "20BA0F0F-9696-51B9-8F19-5D208F7C4B40",
+    "numero": 1,
+    "tirage": [
+     78,
+     62,
+     23,
+     72,
+     46,
+     8,
+     66,
+     19,
+     2,
+     45,
+     40,
+     13,
+     90,
+     26,
+     11,
+     88,
+     61,
+     28,
+     60,
+     49,
+     9,
+     33,
+     31,
+     41,
+     57,
+     6,
+     56,
+     74,
+     70,
+     42,
+     71,
+     52,
+     34,
+     65,
+     14,
+     47,
+     15,
+     53,
+     16,
+     84,
+     82,
+     35,
+     69,
+     32,
+     20,
+     85,
+     44,
+     79,
+     3,
+     67,
+     73,
+     86,
+     54,
+     10,
+     75,
+     36,
+     12,
+     17,
+     29,
+     30,
+     27,
+     81,
+     83,
+     48,
+     24,
+     68,
+     63
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "5D874BD0-EB36-5C99-BC35-945A693A183F",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 25,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "DD9CEA69-E4BF-54C0-83CC-8139294FE48B",
+      "type": "doubleQuine",
+      "lot": "Trottinette",
+      "gagneeApres": 51,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "4C2746EC-9A41-5439-8269-C0D3965ECB53",
+      "type": "cartonPlein",
+      "lot": "Téléviseur",
+      "gagneeApres": 67,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "FE7C3CAD-2C9D-51BB-AA3D-323077DDA092",
+    "numero": 2,
+    "tirage": [
+     32,
+     45,
+     23,
+     77,
+     64,
+     8,
+     53,
+     42,
+     60,
+     68,
+     38,
+     47,
+     61,
+     82,
+     56,
+     74,
+     40,
+     88,
+     58,
+     44,
+     83,
+     28,
+     21,
+     85,
+     46,
+     22,
+     55,
+     20,
+     90,
+     41,
+     3,
+     81,
+     63,
+     10,
+     35,
+     76,
+     67,
+     5,
+     31,
+     69,
+     27,
+     43,
+     2,
+     79,
+     7,
+     17,
+     50,
+     49,
+     15,
+     78,
+     26,
+     70,
+     30,
+     25,
+     14,
+     36,
+     51,
+     59,
+     39,
+     1,
+     16,
+     19,
+     33,
+     18,
+     71,
+     72,
+     57,
+     34,
+     52,
+     6
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "AE909A58-F852-598C-8B14-80C9851DF38F",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 17,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "B6D599B1-AB99-5332-9162-D6BEB7ABFEB9",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 52,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "CEEF98CC-9C63-5F07-838D-383679892C7F",
+      "type": "cartonPlein",
+      "lot": "Vélo électrique",
+      "gagneeApres": 70,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "C5FBB892-69F7-53B6-943A-D22E3B0CD08C",
+    "numero": 3,
+    "tirage": [
+     85,
+     64,
+     79,
+     35,
+     58,
+     34,
+     83,
+     68,
+     72,
+     55,
+     74,
+     46,
+     73,
+     15,
+     39,
+     36,
+     12,
+     89,
+     86,
+     81,
+     3,
+     19,
+     87,
+     38,
+     45,
+     16,
+     61,
+     54,
+     52,
+     14,
+     1,
+     8,
+     71,
+     90,
+     51,
+     13,
+     4,
+     33,
+     5,
+     28,
+     2,
+     22,
+     76,
+     80,
+     23,
+     6,
+     37,
+     11,
+     84,
+     21,
+     44,
+     41,
+     17,
+     32,
+     65,
+     75,
+     56,
+     10,
+     53,
+     7,
+     66,
+     29,
+     63,
+     9,
+     62,
+     30,
+     42,
+     77,
+     59,
+     31,
+     78,
+     49
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "289EACA9-95C8-5690-9540-C0F246EDA4C0",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 22,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "5ABCCDD6-FB6E-5F37-8487-643924BA293C",
+      "type": "doubleQuine",
+      "lot": "Robot de cuisine",
+      "gagneeApres": 46,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "49B21838-3FCE-56F3-9E6A-A5D32D487784",
+      "type": "cartonPlein",
+      "lot": "Téléviseur",
+      "gagneeApres": 72,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "94742211-EA1D-5E30-B071-97390285E344",
+    "numero": 4,
+    "tirage": [
+     23,
+     17,
+     67,
+     54,
+     3,
+     12,
+     81,
+     63,
+     75,
+     52,
+     83,
+     71,
+     8,
+     42,
+     14,
+     39,
+     18,
+     35,
+     27,
+     51,
+     50,
+     90,
+     1,
+     22,
+     44,
+     31,
+     4,
+     82,
+     41,
+     55,
+     64,
+     61,
+     77,
+     16,
+     72,
+     10,
+     30,
+     26,
+     88,
+     68,
+     58,
+     66,
+     85,
+     45,
+     47,
+     24,
+     89,
+     60,
+     65,
+     80,
+     56,
+     6,
+     53,
+     78,
+     37,
+     38,
+     43,
+     29,
+     32,
+     33,
+     48,
+     2,
+     70
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "6FF4D19A-B02A-5DFD-BAF8-2B399AF430FE",
+      "type": "quine",
+      "lot": "Panier garni",
+      "gagneeApres": 20,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "048AC62A-FC1F-5E81-A699-D04AE526B8A7",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 30,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "0CE907E2-D662-549F-8CC2-55868046314B",
+      "type": "cartonPlein",
+      "lot": "Téléviseur",
+      "gagneeApres": 63,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "994C68D9-FB93-564C-AF16-A0CAB9E10D3B",
+    "numero": 5,
+    "tirage": [
+     6,
+     45,
+     50,
+     2,
+     25,
+     42,
+     49,
+     20,
+     68,
+     54,
+     18,
+     71,
+     67,
+     73,
+     51,
+     80,
+     89,
+     15,
+     16,
+     52,
+     12,
+     78,
+     66,
+     48,
+     58,
+     7,
+     19,
+     43,
+     30,
+     59,
+     5,
+     72,
+     39,
+     14,
+     23,
+     41,
+     69,
+     86,
+     65,
+     62,
+     1,
+     8,
+     60,
+     11,
+     44,
+     4,
+     88,
+     21,
+     57,
+     87,
+     77,
+     55,
+     36,
+     10,
+     90,
+     38,
+     26,
+     64,
+     83,
+     79,
+     9,
+     17,
+     81,
+     63,
+     40
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "CB9B9E85-AFF0-59A1-98F2-C9B5950FC993",
+      "type": "quine",
+      "lot": "Jambon sec",
+      "gagneeApres": 29,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "437C0540-A301-5D73-90FF-C29C517399BF",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 50,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "2A0AD145-6BC7-5D75-B86B-EE9B38A56C89",
+      "type": "cartonPlein",
+      "lot": "Tablette",
+      "gagneeApres": 65,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   },
+   {
+    "id": "5E89D6DF-DBF0-5129-BFFC-BAF5EABAECEB",
+    "numero": 6,
+    "tirage": [
+     69,
+     36,
+     14,
+     39,
+     78,
+     34,
+     15,
+     9,
+     42,
+     29,
+     88,
+     12,
+     35,
+     7,
+     64,
+     30,
+     33,
+     13,
+     76,
+     55,
+     26,
+     32,
+     40,
+     19,
+     16,
+     11,
+     87,
+     75,
+     59,
+     46,
+     23,
+     1,
+     90,
+     25,
+     28,
+     38,
+     74,
+     21,
+     4,
+     37,
+     77,
+     86,
+     5,
+     20,
+     41,
+     8,
+     10,
+     63,
+     50,
+     80,
+     44,
+     81,
+     84
+    ],
+    "notes": "",
+    "importee": false,
+    "phases": [
+     {
+      "id": "7707E678-B9E1-502A-BBEF-67EA7E064EAC",
+      "type": "quine",
+      "lot": "Bon d'achat 30 €",
+      "gagneeApres": 20,
+      "gagnant": {
+       "parNous": true,
+       "lignes": [
+        0
+       ],
+       "cartonID": "001"
+      }
+     },
+     {
+      "id": "099A0035-91DA-5262-BB25-2ABF80138B01",
+      "type": "doubleQuine",
+      "lot": "Bon d'achat 80 €",
+      "gagneeApres": 41,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     },
+     {
+      "id": "3BE0107D-4AC9-51BD-ACD9-A1EB90A18DA7",
+      "type": "cartonPlein",
+      "lot": "Tablette",
+      "gagneeApres": 53,
+      "gagnant": {
+       "parNous": false,
+       "lignes": []
+      }
+     }
+    ]
+   }
+  ]
+ }
+]
