@@ -93,6 +93,13 @@ struct SoireeView: View {
                 Button { feuilleNouvellePartie = true } label: { Label("Nouvelle partie", systemImage: "plus") }
             }
         }
+        #if DEBUG
+        .task {
+            guard UserDefaults.standard.string(forKey: "feuille") == "nouvellePartie" else { return }
+            try? await Task.sleep(for: .seconds(1.5))
+            feuilleNouvellePartie = true
+        }
+        #endif
         .sheet(isPresented: $feuilleNouvellePartie) {
             DeroulementSheet(titre: "Partie \(s.prochainNumeroDePartie)", bouton: "Commencer",
                              phases: s.parties.max { $0.numero < $1.numero }.flatMap { $0.importee ? nil : $0.deroulement }

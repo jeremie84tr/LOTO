@@ -17,7 +17,7 @@ App SwiftUI (une seule cible multiplateforme, iOS 17+ et macOS 14+) pour suivre 
   - la moyenne historique : après combien de numéros la phase tombe d'habitude.
 - **Fin de phase** : gagnée par nous (sur quel carton) ou par un autre joueur, avec le lot. Pour une deuxième quine, les lignes déjà gagnées sur un carton ne comptent plus.
 - **Statistiques** par soirée et globales : sorties par numéro, plus et moins sortis, numéros absents depuis le plus de parties, répartition par colonne, quand tombent les phases, performance des cartons, victoires.
-- **Import / export** JSON de toutes les données. L'historique d'Orange (10 parties, 12 cartons) est chargé au premier lancement.
+- **Import / export** JSON de toutes les données. Des données d'exemple **fictives** (3 soirées) sont chargées au premier lancement ; elles sont générées par `outils/generer_exemples.py`.
 
 Les données sont enregistrées automatiquement (`Application Support/Loto/loto.json`).
 
@@ -34,13 +34,24 @@ Pour compiler en ligne de commande, Xcode doit être l'outil actif :
 
     ./Tests/lancer.sh
 
-Ils vérifient la saisie des cartons, les objectifs par phase, l'enchaînement 2 quines → double quine → carton plein, les textes des conseils, les probabilités, et retrouvent les chiffres des rapports d'Orange (500 numéros, carton 009 à 97 cases).
+Ils vérifient la saisie des cartons, les objectifs par phase, l'enchaînement 2 quines → double quine → carton plein, les textes des conseils et les probabilités. Ils retrouvent aussi les chiffres des rapports d'Orange à partir des dossiers `parties/` du dépôt (500 numéros, carton 009 à 97 cases), et contrôlent que les données d'exemple embarquées sont anonymes.
 
 ## Reprendre l'historique du dépôt
 
 Le script `outils/exporter_historique.py` convertit les dossiers `parties/` du dépôt en fichier importable (menu ⋯ › Importer) :
 
     ./outils/exporter_historique.py ../parties -o historique.json --phases quine,quine,doubleQuine,cartonPlein
+
+## Publication sur l'App Store
+
+Tout est dans [`AppStore/`](AppStore/FICHE_APP_STORE.md) :
+
+- `FICHE_APP_STORE.md` : textes prêts à copier-coller (nom, sous-titre, description, mots-clés, URL, confidentialité, classification, notes pour la vérification) ;
+- `captures/iphone-6.9/` (1320 × 2868) et `captures/ipad-13/` (2064 × 2752) : visuels habillés ; `captures/brutes/` : les mêmes sans habillage ;
+- `promo/` : icône 1024 × 1024 et bannière 1920 × 1080 ;
+- `outils/captures.sh` puis `outils/composer.sh` pour tout régénérer.
+
+Le site d'aide et la politique de confidentialité sont dans [`../docs/`](../docs/index.html), à publier avec GitHub Pages.
 
 ## Organisation du code
 

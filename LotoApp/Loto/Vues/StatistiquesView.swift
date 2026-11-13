@@ -79,15 +79,20 @@ struct StatistiquesView: View {
         }
     }
 
+    /// Barre explicite (début, fin, base) : `width: .ratio` ne marche pas sur un axe numérique continu.
+    private func barre(_ n: StatNumero) -> some ChartContent {
+        let x = Double(n.numero)
+        return RectangleMark(xStart: .value("Numéro", x - 0.4), xEnd: .value("Numéro", x + 0.4),
+                             yStart: .value("Sorties", 0.0), yEnd: .value("Sorties", Double(n.sorties)))
+            .foregroundStyle(Color.accentColor.gradient)
+    }
+
     private var frequences: some View {
         let moyenne = Double(stats.nbNumeros) / 90
         return VStack(alignment: .leading, spacing: 8) {
             Text("Sorties par numéro").font(.title3.bold())
             Chart {
-                ForEach(stats.numeros) { n in
-                    BarMark(x: .value("Numéro", n.numero), y: .value("Sorties", n.sorties), width: .ratio(0.8))
-                        .foregroundStyle(Color.accentColor.gradient)
-                }
+                ForEach(stats.numeros) { n in barre(n) }
                 RuleMark(y: .value("Moyenne", moyenne))
                     .lineStyle(StrokeStyle(lineWidth: 1, dash: [4, 3]))
                     .foregroundStyle(.secondary)

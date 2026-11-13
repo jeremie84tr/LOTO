@@ -41,7 +41,7 @@ final class Magasin {
 
     private func charger() {
         guard let data = try? Data(contentsOf: fichier) else {
-            soirees = Self.historiqueEmbarque()
+            soirees = Self.exemplesEmbarques()
             return
         }
         do {
@@ -64,8 +64,8 @@ final class Magasin {
         }
     }
 
-    static func historiqueEmbarque() -> [Soiree] {
-        guard let url = Bundle.main.url(forResource: "historique_orange", withExtension: "json"),
+    static func exemplesEmbarques() -> [Soiree] {
+        guard let url = Bundle.main.url(forResource: "exemples", withExtension: "json"),
               let data = try? Data(contentsOf: url) else { return [] }
         return (try? decodeur().decode([Soiree].self, from: data)) ?? []
     }
@@ -89,9 +89,9 @@ final class Magasin {
         return nouvelles.count
     }
 
-    func rechargerHistorique() {
+    func rechargerExemples() {
         var copie = soirees
-        for s in Self.historiqueEmbarque() {
+        for s in Self.exemplesEmbarques() {
             if let i = copie.firstIndex(where: { $0.id == s.id }) { copie[i] = s } else { copie.append(s) }
         }
         soirees = copie

@@ -81,5 +81,15 @@ let enc = JSONEncoder(); enc.dateEncodingStrategy = .iso8601
 let relu = try! dec.decode([Soiree].self, from: enc.encode(soirees))
 verifier(relu == soirees, "aller-retour JSON sans perte")
 
+print("Données d'exemple embarquées")
+let exemples = try! dec.decode([Soiree].self, from: Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[2])))
+verifier(exemples.count == 3 && !exemples.contains { $0.lieu.contains("Orange") }, "3 soirées fictives, aucune référence à Orange")
+verifier(exemples.allSatisfy { $0.cartons.allSatisfy { $0.serie == nil && $0.grille.allSatisfy { $0.compactMap { $0 }.count == 5 } } },
+         "cartons valides, sans numéro de série")
+let enCours = exemples[0].parties.last!
+let etatDemo = Analyse.etat(partie: enCours, cartons: exemples[0].cartons)
+verifier(etatDemo.nomPhase == "Quine 2" && etatDemo.gagnes.isEmpty && etatDemo.objectifs.first?.reste == 1,
+         "partie d'exemple en cours : un carton à 1 numéro de la quine 2")
+
 print(echecs == 0 ? "\nTous les tests passent." : "\n\(echecs) échec(s).")
 exit(echecs == 0 ? 0 : 1)

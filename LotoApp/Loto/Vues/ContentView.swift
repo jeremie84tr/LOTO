@@ -15,7 +15,6 @@ struct ContentView: View {
     @State private var documentExport: DocumentLoto?
     @State private var soireeASupprimer: Soiree?
     @State private var info: String?
-
     private var soireesTriees: [Soiree] { magasin.soirees.sorted { $0.date > $1.date } }
 
     var body: some View {
@@ -62,8 +61,8 @@ struct ContentView: View {
                             }
                         } label: { Label("Exporter toutes les données…", systemImage: "square.and.arrow.up") }
                         Divider()
-                        Button { magasin.rechargerHistorique() } label: {
-                            Label("Recharger l'historique d'Orange", systemImage: "clock.arrow.circlepath")
+                        Button { magasin.rechargerExemples() } label: {
+                            Label("Recharger les exemples", systemImage: "clock.arrow.circlepath")
                         }
                     } label: {
                         Label("Plus", systemImage: "ellipsis.circle")
@@ -99,15 +98,7 @@ struct ContentView: View {
         }
         .onChange(of: selection) { chemin = [] }
         #if DEBUG
-        .task {
-            // Lancement avec « -ouvrirPartie » : ouvre la dernière partie de la soirée la plus récente.
-            guard ProcessInfo.processInfo.arguments.contains("-ouvrirPartie"),
-                  let s = soireesTriees.first, let p = s.parties.last else { return }
-            try? await Task.sleep(for: .seconds(1))
-            selection = .soiree(s.id)
-            try? await Task.sleep(for: .seconds(1))
-            chemin = [.partie(soiree: s.id, partie: p.id)]
-        }
+        .modeCapture(selection: $selection, chemin: $chemin, soirees: soireesTriees)
         #endif
         .sheet(isPresented: $nouvelleSoiree) {
             NouvelleSoireeSheet { id in selection = .soiree(id) }

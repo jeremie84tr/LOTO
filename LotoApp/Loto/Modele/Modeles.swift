@@ -50,7 +50,7 @@ struct Deroulement: Identifiable, Hashable {
 
     static let modeles: [Deroulement] = [
         Deroulement(nom: "Classique", phases: [.quine, .doubleQuine, .cartonPlein]),
-        Deroulement(nom: "Deux quines (comme à Orange)", phases: [.quine, .quine, .doubleQuine, .cartonPlein]),
+        Deroulement(nom: "Deux quines", phases: [.quine, .quine, .doubleQuine, .cartonPlein]),
         Deroulement(nom: "Quine puis carton plein", phases: [.quine, .cartonPlein]),
         Deroulement(nom: "Carton plein seul", phases: [.cartonPlein]),
     ]

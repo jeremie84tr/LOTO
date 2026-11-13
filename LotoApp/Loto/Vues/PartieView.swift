@@ -44,26 +44,36 @@ struct PartieView: View {
                     }
                     .frame(width: min(480, geo.size.width * 0.45))
                     Divider()
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 16) {
-                            alerte(etat: etat, partie: partie)
-                            conseilsView(conseils)
-                            cartonsView(partie, etat: etat)
+                    ScrollViewReader { proxy in
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 16) {
+                                alerte(etat: etat, partie: partie)
+                                conseilsView(conseils)
+                                cartonsView(partie, etat: etat).id("cartons")
+                            }
+                            .padding()
                         }
-                        .padding()
+                        #if DEBUG
+                        .defilementCapture(proxy)
+                        #endif
                     }
                 }
             } else {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        bandeauPhases(partie)
-                        alerte(etat: etat, partie: partie)
-                        saisieView(partie)
-                        conseilsView(conseils)
-                        tableau(partie, etat: etat)
-                        cartonsView(partie, etat: etat)
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            bandeauPhases(partie)
+                            alerte(etat: etat, partie: partie)
+                            saisieView(partie)
+                            conseilsView(conseils)
+                            tableau(partie, etat: etat).id("tableau")
+                            cartonsView(partie, etat: etat).id("cartons")
+                        }
+                        .padding()
                     }
-                    .padding()
+                    #if DEBUG
+                    .defilementCapture(proxy)
+                    #endif
                 }
             }
         }
