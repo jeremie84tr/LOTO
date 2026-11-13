@@ -8,6 +8,7 @@ on:
 
 jobs:
   tests:
+    name: Scripts Python
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -37,3 +38,20 @@ jobs:
         with:
           name: rapport-tests-py${{ matrix.python-version }}
           path: rapport-tests.xml
+
+  app:
+    name: App iOS / macOS (logique + compilation)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tests de la logique (Swift)
+        run: ./LotoApp/Tests/lancer.sh
+
+      - name: Compilation de l'app pour macOS
+        working-directory: LotoApp
+        run: |
+          xcodebuild -project Loto.xcodeproj -target Loto -sdk macosx \
+            -configuration Debug CODE_SIGNING_ALLOWED=NO build | tail -30
+          test "${PIPESTATUS[0]}" -eq 0
+        shell: bash

@@ -61,6 +61,44 @@ p2.tirage = [7, 28, 30]
 let c2 = Analyse.conseils(etat: Analyse.etat(partie: p2, cartons: [carton]))
 verifier(c2.contains { $0.texte == "Plus que 2 numéros, 56 et 65, avant la quine !" }, "« Plus que 2 numéros, 56 et 65, avant la quine ! »")
 
+print("Victoire à réclamer au tirage même")
+// Lignes du carton 001 : [7 28 30 56 65] · [6 11 45 68 90] · [35 44 54 78 81]
+func etatApres(_ tirage: [Int], _ deroulement: [TypePhase] = [.quine]) -> EtatPartie {
+    var p = Partie(numero: 9, deroulement: deroulement)
+    p.tirage = tirage
+    return Analyse.etat(partie: p, cartons: [carton])
+}
+let ligne1 = [7, 28, 30, 56, 65], ligne2 = [6, 11, 45, 68, 90], ligne3 = [35, 44, 54, 78, 81]
+verifier(etatApres([65, 7, 28, 30, 56]).gagnes.count == 1,
+         "quine proposée au tirage qui complète la ligne, quel que soit l'ordre des numéros")
+let rate = etatApres(ligne1 + [12])
+verifier(rate.gagnes.isEmpty, "quine plus proposée au tirage suivant (trop tard)")
+verifier(rate.objectifs.first?.reste == 5 && rate.objectifs.first?.lignes == [1],
+         "après une quine ratée, l'objectif devient la ligne suivante")
+verifier(!Analyse.conseils(etat: rate).contains { $0.niveau == .gagne }, "aucun conseil « Criez-le ! » après le tirage")
+let presque = etatApres(ligne1 + [12] + ligne2.dropLast())
+verifier(presque.objectifs.first?.reste == 1 && presque.objectifs.first?.gagnants == [90],
+         "quine ratée sur la ligne 1 : le 90 (ligne 2) fait gagner")
+let rattrape = etatApres(ligne1 + [12] + ligne2)
+verifier(rattrape.gagnes.first?.lignes == [1], "quine sur une nouvelle ligne proposée à son tirage")
+verifier(etatApres(ligne1 + ligne2 + [12]).gagnes.isEmpty, "deux lignes ratées : rien à réclamer")
+verifier(etatApres(ligne1 + ligne2, [.doubleQuine]).gagnes.first?.lignes == [0, 1], "double quine proposée à son tirage")
+let dqRatee = etatApres(ligne1 + ligne2 + [12], [.doubleQuine])
+verifier(dqRatee.gagnes.isEmpty && dqRatee.objectifs.first?.lignes == [0, 2] && dqRatee.objectifs.first?.reste == 5,
+         "double quine ratée : une ligne déjà complète + une nouvelle ligne à compléter")
+verifier(etatApres(ligne1 + ligne2 + [12] + ligne3, [.doubleQuine]).gagnes.first?.lignes == [0, 2],
+         "double quine réclamable quand une nouvelle ligne se complète")
+verifier(Analyse.objectif(carton: carton, type: .quine, tires: Set(ligne1 + [12]))?.reste == 0,
+         "sans dernier numéro connu, une ligne complète compte toujours")
+var pRatee = Partie(numero: 10, deroulement: [.quine])
+pRatee.tirage = ligne1 + [12]
+let simuRatee = Analyse.simulation(partie: pRatee, cartons: [carton], essais: 300)!
+verifier(simuRatee.mediane >= 1, "simulation après quine ratée : il faut encore des numéros (\(simuRatee.mediane))")
+pRatee.tirage = ligne1 + ligne2 + ligne3 + [12]
+verifier(Analyse.etat(partie: pRatee, cartons: [carton]).objectifs.isEmpty
+         && Analyse.simulation(partie: pRatee, cartons: [carton], essais: 50) == nil,
+         "carton complet sans victoire réclamée : il ne peut plus gagner la quine")
+
 print("Probabilités et simulation")
 verifier(abs(etat.proba(dansLes: 1) - 1.0 / 81) < 1e-9, "1 gagnant sur 81 restants")
 let simu = Analyse.simulation(partie: partie, cartons: [carton], essais: 500)!

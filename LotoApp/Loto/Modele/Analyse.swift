@@ -84,21 +84,43 @@ enum Analyse {
         return exclues
     }
 
+    /// Ce qu'il manque à `carton` pour gagner une phase de type `type`.
+    ///
+    /// Une victoire ne se réclame qu'au tirage même qui complète la dernière ligne nécessaire :
+    /// `dernier` est le dernier numéro tiré. Si le carton a déjà assez de lignes complètes mais
+    /// qu'aucune ne vient d'être complétée par `dernier`, il est trop tard pour elles : il lui faut
+    /// compléter une nouvelle ligne (les lignes complètes restent utilisables pour une double quine).
+    /// Sans `dernier` (nil), toute ligne complète compte, comme avant.
     static func objectif(carton: Carton, type: TypePhase, tires: Set<Int>,
-                         exclues: Set<Int> = []) -> Objectif? {
+                         exclues: Set<Int> = [], dernier: Int? = nil) -> Objectif? {
         let k = type.lignesRequises
         let dispo = carton.grille.indices.filter { !exclues.contains($0) }
         guard dispo.count >= k else { return nil }
         let parLigne = dispo
             .map { i in (ligne: i, manquants: carton.numeros(ligne: i).filter { !tires.contains($0) }) }
             .sorted { ($0.manquants.count, $0.ligne) < ($1.manquants.count, $1.ligne) }
-        let choisies = Array(parLigne.prefix(k))
+        let completes = parLigne.filter { $0.manquants.isEmpty }
+
+        var choisies = Array(parLigne.prefix(k))
+        var candidates = parLigne
+        if completes.count >= k, let dernier {
+            if let juste = completes.first(where: { carton.numeros(ligne: $0.ligne).contains(dernier) }) {
+                // Victoire au tirage même : la ligne qui vient d'être complétée en fait partie.
+                choisies = [juste] + completes.filter { $0.ligne != juste.ligne }.prefix(k - 1)
+            } else {
+                // Trop tard pour les lignes déjà complètes : il faut en compléter une nouvelle.
+                let incompletes = parLigne.filter { !$0.manquants.isEmpty }
+                guard let suivante = incompletes.first else { return nil }
+                choisies = Array(completes.prefix(k - 1)) + [suivante]
+                candidates = incompletes
+            }
+        }
         let manquants = choisies.flatMap(\.manquants).sorted()
 
         var gagnants: [Int] = []
         if manquants.count == 1 {
             // k-1 lignes déjà complètes : toute ligne à qui il manque un seul numéro fait gagner.
-            gagnants = parLigne.filter { $0.manquants.count == 1 }.map { $0.manquants[0] }.sorted()
+            gagnants = candidates.filter { $0.manquants.count == 1 }.map { $0.manquants[0] }.sorted()
         }
         return Objectif(carton: carton, type: type, lignes: choisies.map(\.ligne).sorted(),
                         manquants: manquants, gagnants: gagnants)
@@ -114,7 +136,8 @@ enum Analyse {
         let objectifs = cartons
             .compactMap { c in
                 objectif(carton: c, type: type, tires: tires,
-                         exclues: lignesExclues(partie: partie, phaseIndex: i, cartonID: c.id))
+                         exclues: lignesExclues(partie: partie, phaseIndex: i, cartonID: c.id),
+                         dernier: partie.tirage.last)
             }
             .sorted { a, b in
                 if a.reste != b.reste { return a.reste < b.reste }
@@ -154,10 +177,15 @@ enum Analyse {
             for lignes in preparations {
                 var temps = lignes.map { l in l.reduce(0) { max($0, position[$1]) } }
                 temps.sort()
-                meilleur = min(meilleur, temps[k - 1])
+                // Les lignes déjà complètes (temps 0) ne suffisent pas : il est trop tard pour elles,
+                // la victoire viendra au premier tirage qui complète une nouvelle ligne.
+                let t = temps[k - 1] > 0 ? temps[k - 1] : (temps.first { $0 > 0 } ?? 0)
+                if t == 0 { continue }
+                meilleur = min(meilleur, t)
             }
-            resultats.append(meilleur)
+            if meilleur < Int.max { resultats.append(meilleur) }
         }
+        guard !resultats.isEmpty else { return nil }
         resultats.sort()
         let n = Double(resultats.count)
         return Simulation(

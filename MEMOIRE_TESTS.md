@@ -1,7 +1,7 @@
 # Mémoire des tests : LOTO
 
 Liste de tout ce qu'il faut tester dans l'application, avec le statut de chaque point.
-Les identifiants (`NP-xx`, `SU-xx`…) sont repris en commentaire dans les tests (`tests/`).
+Les identifiants (`NP-xx`, `SU-xx`…) sont repris en commentaire dans les tests Python (`tests/`). Les points `AP-xx` de l'application correspondent aux sections de `LotoApp/Tests/main.swift`.
 
 Dernière exécution : 13/11/2026, `python -m pytest` : **128 réussis, 2 ignorés (rapports sans section concernée), 0 échec**.
 
@@ -9,14 +9,16 @@ Légende des statuts :
 
 - ✅ **OK** : testé, passe.
 - ❌ **Échec connu** : testé, le défaut existe. Le test est marqué `xfail(strict=True)` : la CI reste verte tant que le bug existe et devient rouge quand il est corrigé, pour penser à retirer le marqueur et à passer le statut à ✅.
+- ⏳ **À confirmer** : test écrit, pas encore vu passer (tests Swift : ils ne tournent que sur Mac, donc dans la CI).
 - ⬜ **Non testé** : identifié, pas encore automatisé.
 
 Lancer les tests :
 
     pip install -r requirements-dev.txt
-    python -m pytest
+    python -m pytest            # scripts Python et données
+    ./LotoApp/Tests/lancer.sh   # logique de l'app (Mac avec Xcode)
 
-La CI (`.github/workflows/tests.yml`) lance la suite à chaque push sur toutes les branches et sur chaque pull request, sous Python 3.10 et 3.13.
+La CI (`.github/workflows/tests.yml`) lance tout à chaque push sur toutes les branches et sur chaque pull request : les tests Python sous Python 3.10 et 3.13 (Linux), les tests Swift et la compilation de l'app sur macOS.
 
 ## 1. `nouvelle_partie.py` : création d'une partie (`tests/test_nouvelle_partie.py`)
 
@@ -125,7 +127,26 @@ Les chiffres des rapports `*_AAAA-MM-JJ_lieu.md` sont recalculés à partir des 
 | RA-09 | Aucun rapport ne déclare périmé un fichier qui est à jour | ✅ OK (BUG-06 corrigé) |
 | RA-10 | Tableau « Chances de carton plein » conforme au calcul exact, à la précision affichée | ✅ OK (BUG-07 corrigé) |
 
-## 6. Points non automatisés
+## 6. Application iOS / macOS (`LotoApp/Tests/main.swift`)
+
+| ID | Point à tester | Statut |
+|---|---|---|
+| AP-01 | Saisie d'un carton : 15 numéros placés dans les bonnes colonnes (90 → colonne 80), refus de deux numéros de la même dizaine sur une ligne | ⏳ À confirmer |
+| AP-02 | Objectifs : numéros manquants pour quine, double quine, carton plein ; plusieurs numéros gagnants possibles | ⏳ À confirmer |
+| AP-03 | Enchaînement 2 quines → double quine → carton plein : noms des phases, ligne déjà gagnée exclue de la quine suivante | ⏳ À confirmer |
+| AP-04 | Textes des conseils (« Plus qu'un numéro… », « Plus que 2 numéros… », planche indiquée) | ⏳ À confirmer |
+| AP-05 | Victoire proposée au tirage qui complète la ligne, quel que soit l'ordre des numéros | ⏳ À confirmer |
+| AP-06 | Victoire **plus** proposée au tirage suivant (quine ou double quine ratée), pas de « Criez-le ! » | ⏳ À confirmer (BUG-10 corrigé) |
+| AP-07 | Après une victoire ratée, l'objectif devient une nouvelle ligne ; elle est réclamable à son propre tirage | ⏳ À confirmer |
+| AP-08 | Double quine ratée : une ligne déjà complète reste utilisable avec une nouvelle ligne | ⏳ À confirmer |
+| AP-09 | Simulation : après une victoire ratée, il faut encore des numéros ; carton sans ligne à compléter → pas de simulation | ⏳ À confirmer |
+| AP-10 | Probabilité qu'un numéro gagnant sorte au prochain tirage | ⏳ À confirmer |
+| AP-11 | Historique d'Orange importé : 10 parties, 500 numéros, le 80 sorti 10 fois, carton 009 à 97 cases, aller-retour JSON | ⏳ À confirmer |
+| AP-12 | Données d'exemple : 3 soirées fictives, anonymes, cartons valides, partie en cours cohérente | ⏳ À confirmer |
+| AP-13 | L'app compile pour macOS | ⏳ À confirmer |
+| AP-14 | Saisie groupée (`12 45 3`) : arrêt sur le numéro qui fait gagner, le reste laissé dans le champ | ⬜ Non testé (interface, à vérifier à la main) |
+
+## 7. Points non automatisés
 
 | ID | Point à tester | Statut |
 |---|---|---|
@@ -151,6 +172,7 @@ Aucun.
 | BUG-07 | `rapport_global_2026-11-11_orange.md` | Chance de carton plein à 55 tirages annoncée à 0,03 % au lieu de 0,31 % | Tableau remplacé par le calcul exact sur les 12 cartons | RA-10 |
 | BUG-08 | `rapport_global_2026-11-11_orange.md` | « 1 sur 3 000 par carton » : c'est la chance pour les 12 cartons ensemble ; pour un carton c'est 1 sur 42 000 | Phrase corrigée | (relu à la main) |
 | BUG-09 | `suivi.py` | Deux saisies simultanées pouvaient perdre des numéros (lecture puis écriture sans verrou) | Verrou de fichier et écriture atomique | SU-15 |
+| BUG-10 | App (`Analyse.swift`) | Une quine (ou double quine, carton plein) restait proposée à la validation aux tirages suivants, alors qu'elle ne se réclame qu'au tirage qui la complète | La victoire n'est proposée que si le dernier numéro tiré complète une des lignes ; sinon il faut compléter une nouvelle ligne. La saisie groupée s'arrête sur le numéro gagnant | AP-05 à AP-09 |
 
 ## Mise à jour de cette mémoire
 

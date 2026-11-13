@@ -228,15 +228,26 @@ struct PartieView: View {
     private func valider() {
         let nums = Carton.extraireNumeros(saisie)
         var erreurs: [String] = []
-        for n in nums {
+        var reste = ""
+        for (i, n) in nums.enumerated() {
             switch magasin.tirer(n, soiree: soireeID, partie: partieID) {
-            case .ok: break
+            case .ok:
+                // Une victoire ne se réclame qu'au tirage qui la donne : on s'arrête sur ce numéro
+                // pour laisser le temps de la valider, le reste de la saisie reste dans le champ.
+                let suite = nums[(i + 1)...]
+                if !suite.isEmpty, let s = magasin.soiree(soireeID),
+                   let p = s.parties.first(where: { $0.id == partieID }),
+                   !Analyse.etat(partie: p, cartons: s.cartons).gagnes.isEmpty {
+                    reste = suite.map(String.init).joined(separator: " ")
+                    erreurs.append("Saisie arrêtée au \(n) : validez la victoire, puis ajoutez \(reste)")
+                }
             case .dejaTire: erreurs.append("\(n) déjà tiré")
             case .horsLimites: erreurs.append("\(n) hors 1-90")
             }
+            if !reste.isEmpty { break }
         }
         message = erreurs.isEmpty ? nil : erreurs.joined(separator: " · ")
-        saisie = ""
+        saisie = reste
     }
 
     private func tableau(_ partie: Partie, etat: EtatPartie) -> some View {
