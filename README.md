@@ -9,3 +9,5 @@ Chaque partie a son espace : `parties/AAAA-MM-JJ_lieu/`
 Créer une partie :
 
     ./nouvelle_partie.py 2026-11-20 "Salle des fêtes" --cartons 20
+
+Application iOS / macOS pour suivre les lotos en direct : voir [LotoApp/README.md](LotoApp/README.md).
