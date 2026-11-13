@@ -3,7 +3,7 @@
 Liste de tout ce qu'il faut tester dans l'application, avec le statut de chaque point.
 Les identifiants (`NP-xx`, `SU-xx`…) sont repris en commentaire dans les tests Python (`tests/`). Les points `AP-xx` de l'application correspondent aux sections de `LotoApp/Tests/main.swift`.
 
-Dernière exécution : 13/11/2026, `python -m pytest` : **128 réussis, 2 ignorés (rapports sans section concernée), 0 échec**.
+Dernière exécution : 13/11/2026. Python (`python -m pytest`) : **128 réussis, 2 ignorés (rapports sans section concernée), 0 échec**. App (`LotoApp/Tests/lancer.sh`, CI macOS) : **41 vérifications réussies, compilation macOS OK**.
 
 Légende des statuts :
 
@@ -131,19 +131,19 @@ Les chiffres des rapports `*_AAAA-MM-JJ_lieu.md` sont recalculés à partir des 
 
 | ID | Point à tester | Statut |
 |---|---|---|
-| AP-01 | Saisie d'un carton : 15 numéros placés dans les bonnes colonnes (90 → colonne 80), refus de deux numéros de la même dizaine sur une ligne | ⏳ À confirmer |
-| AP-02 | Objectifs : numéros manquants pour quine, double quine, carton plein ; plusieurs numéros gagnants possibles | ⏳ À confirmer |
-| AP-03 | Enchaînement 2 quines → double quine → carton plein : noms des phases, ligne déjà gagnée exclue de la quine suivante | ⏳ À confirmer |
-| AP-04 | Textes des conseils (« Plus qu'un numéro… », « Plus que 2 numéros… », planche indiquée) | ⏳ À confirmer |
-| AP-05 | Victoire proposée au tirage qui complète la ligne, quel que soit l'ordre des numéros | ⏳ À confirmer |
-| AP-06 | Victoire **plus** proposée au tirage suivant (quine ou double quine ratée), pas de « Criez-le ! » | ⏳ À confirmer (BUG-10 corrigé) |
-| AP-07 | Après une victoire ratée, l'objectif devient une nouvelle ligne ; elle est réclamable à son propre tirage | ⏳ À confirmer |
-| AP-08 | Double quine ratée : une ligne déjà complète reste utilisable avec une nouvelle ligne | ⏳ À confirmer |
-| AP-09 | Simulation : après une victoire ratée, il faut encore des numéros ; carton sans ligne à compléter → pas de simulation | ⏳ À confirmer |
-| AP-10 | Probabilité qu'un numéro gagnant sorte au prochain tirage | ⏳ À confirmer |
-| AP-11 | Historique d'Orange importé : 10 parties, 500 numéros, le 80 sorti 10 fois, carton 009 à 97 cases, aller-retour JSON | ⏳ À confirmer |
-| AP-12 | Données d'exemple : 3 soirées fictives, anonymes, cartons valides, partie en cours cohérente | ⏳ À confirmer |
-| AP-13 | L'app compile pour macOS | ⏳ À confirmer |
+| AP-01 | Saisie d'un carton : 15 numéros placés dans les bonnes colonnes (90 → colonne 80), refus de deux numéros de la même dizaine sur une ligne | ✅ OK |
+| AP-02 | Objectifs : numéros manquants pour quine, double quine, carton plein ; plusieurs numéros gagnants possibles | ✅ OK |
+| AP-03 | Enchaînement 2 quines → double quine → carton plein : noms des phases, ligne déjà gagnée exclue de la quine suivante | ✅ OK |
+| AP-04 | Textes des conseils (« Plus qu'un numéro… », « Plus que 2 numéros… », planche indiquée) | ✅ OK |
+| AP-05 | Victoire proposée au tirage qui complète la ligne, quel que soit l'ordre des numéros | ✅ OK |
+| AP-06 | Victoire **plus** proposée au tirage suivant (quine ou double quine ratée), pas de « Criez-le ! » | ✅ OK (BUG-10 corrigé) |
+| AP-07 | Après une victoire ratée, l'objectif devient une nouvelle ligne ; elle est réclamable à son propre tirage | ✅ OK |
+| AP-08 | Double quine ratée : une ligne déjà complète reste utilisable avec une nouvelle ligne | ✅ OK |
+| AP-09 | Simulation : après une victoire ratée, il faut encore des numéros ; carton sans ligne à compléter → pas de simulation | ✅ OK |
+| AP-10 | Probabilité qu'un numéro gagnant sorte au prochain tirage | ✅ OK |
+| AP-11 | Historique d'Orange importé : 10 parties, 500 numéros, le 80 sorti 10 fois, carton 009 à 97 cases, aller-retour JSON | ✅ OK |
+| AP-12 | Données d'exemple : 3 soirées fictives, anonymes, cartons valides, partie en cours cohérente | ✅ OK |
+| AP-13 | L'app compile pour macOS | ✅ OK |
 | AP-14 | Saisie groupée (`12 45 3`) : arrêt sur le numéro qui fait gagner, le reste laissé dans le champ | ⬜ Non testé (interface, à vérifier à la main) |
 
 ## 7. Points non automatisés
