@@ -168,3 +168,21 @@ def test_pas_de_mention_de_fichier_perime(rapport):  # RA-09
         data = _donnees(_base(stats))
         _, lignes = _tableau(stats.read_text(), "Partie", "Numéros tirés")
         assert len(lignes) != len(data), f"{rapport.name} dit {m.group(1)} périmé alors qu'il est à jour"
+
+
+@pytest.mark.parametrize("rapport", RAPPORTS, ids=[r.name for r in RAPPORTS])
+def test_chances_de_carton_plein(rapport):  # RA-10
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("probabilites", RACINE / "probabilites.py")
+    pr = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(pr)
+    md = rapport.read_text()
+    if "## Chances de carton plein" not in md:
+        pytest.skip("pas de section chances de carton plein")
+    cartons = pr.charger_cartons(PARTIES / _donnees(_base(rapport))[1]["dossier"])
+    _, lignes = _tableau(md, "Numéros tirés", "Chance d'un carton plein")
+    for l in lignes:
+        affiche = l[1].removesuffix(" %").replace(",", ".")
+        decimales = len(affiche.partition(".")[2])
+        exact = pr.proba_au_moins_un(cartons, int(l[0])) * 100
+        assert abs(float(affiche) - exact) <= 0.5 * 10 ** -decimales + 1e-12, f"{l[0]} tirés : {l[1]} au lieu de {exact:.4f} %"

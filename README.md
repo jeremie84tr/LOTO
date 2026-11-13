@@ -10,6 +10,10 @@ Créer une partie :
 
     ./nouvelle_partie.py 2026-11-20 "Salle des fêtes" --cartons 20
 
+Chances de carton plein (calcul exact) :
+
+    ./probabilites.py parties/2026-11-11_orange 40 48 55
+
 Tests :
 
     pip install -r requirements-dev.txt

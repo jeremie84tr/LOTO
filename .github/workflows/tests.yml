@@ -26,7 +26,7 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Scripts exécutables et syntaxe
-        run: python -m py_compile nouvelle_partie.py suivi.py
+        run: python -m py_compile nouvelle_partie.py suivi.py probabilites.py
 
       - name: Suite de tests
         run: python -m pytest -v --junitxml=rapport-tests.xml

@@ -3,7 +3,7 @@
 Liste de tout ce qu'il faut tester dans l'application, avec le statut de chaque point.
 Les identifiants (`NP-xx`, `SU-xx`…) sont repris en commentaire dans les tests (`tests/`).
 
-Dernière exécution : 13/11/2026, `python -m pytest` : **113 réussis, 0 échec connu, 0 échec**.
+Dernière exécution : 13/11/2026, `python -m pytest` : **128 réussis, 2 ignorés (rapports sans section concernée), 0 échec**.
 
 Légende des statuts :
 
@@ -75,8 +75,23 @@ La CI (`.github/workflows/tests.yml`) lance la suite à chaque push sur toutes l
 | SU-12 | Un argument non numérique est ignoré avec un message (« Ignoré (pas un numéro) »), sans planter | ✅ OK (BUG-03 corrigé) |
 | SU-13 | Dossier absent : message clair au lieu d'une trace d'erreur Python | ✅ OK (BUG-04 corrigé) |
 | SU-14 | Sans argument : affiche l'usage, sans trace d'erreur | ✅ OK |
+| SU-15 | 20 `suivi.py` lancés en même temps : aucun numéro perdu (verrou + écriture atomique) | ✅ OK (BUG-09 corrigé) |
+| SU-16 | Aucun fichier temporaire laissé dans `tirage/` | ✅ OK |
 
-## 3. Intégrité des données `parties/` (`tests/test_donnees.py`)
+## 3. `probabilites.py` : chances de carton plein (`tests/test_probabilites.py`)
+
+| ID | Point à tester | Statut |
+|---|---|---|
+| PR-01 | Bornes : 0 sous 15 tirages, 1 à 90 tirages | ✅ OK |
+| PR-02 | Refuse un nombre de tirages hors 0-90 | ✅ OK |
+| PR-03 | Probabilité croissante avec le nombre de tirages | ✅ OK |
+| PR-04 | Calcul exact identique à l'énumération de tous les tirages (petits cas, cartons disjoints ou avec numéros communs) | ✅ OK |
+| PR-05 | Avec un seul carton, identique à la formule d'un carton | ✅ OK |
+| PR-06 | La simulation donne le même résultat que le calcul exact | ✅ OK |
+| PR-07 | Valeur pour les 12 cartons d'Orange à 48 tirages (0,0286 %) | ✅ OK |
+| PR-08 | Ligne de commande : tableau correct, usage si argument manquant | ✅ OK |
+
+## 4. Intégrité des données `parties/` (`tests/test_donnees.py`)
 
 Vérifié sur chacun des dossiers de partie présents dans le dépôt.
 
@@ -93,7 +108,7 @@ Vérifié sur chacun des dossiers de partie présents dans le dépôt.
 
 Note : les cartons importés (Loto 2000) n'ont pas leurs colonnes triées de haut en bas. Ce n'est pas exigé pour les données, seulement pour les cartons générés (NP-10).
 
-## 4. Cohérence des rapports Markdown (`tests/test_rapports.py`)
+## 5. Cohérence des rapports Markdown (`tests/test_rapports.py`)
 
 Les chiffres des rapports `*_AAAA-MM-JJ_lieu.md` sont recalculés à partir des données.
 
@@ -108,15 +123,16 @@ Les chiffres des rapports `*_AAAA-MM-JJ_lieu.md` sont recalculés à partir des 
 | RA-07 | Cases cochées par carton et par partie, avec total | ✅ OK |
 | RA-08 | Listes « sortis dans N parties » | ✅ OK |
 | RA-09 | Aucun rapport ne déclare périmé un fichier qui est à jour | ✅ OK (BUG-06 corrigé) |
+| RA-10 | Tableau « Chances de carton plein » conforme au calcul exact, à la précision affichée | ✅ OK (BUG-07 corrigé) |
 
-## 5. Points non automatisés
+## 6. Points non automatisés
 
 | ID | Point à tester | Statut |
 |---|---|---|
-| MA-01 | Simulation des chances de carton plein (rapport global) : pas de script dans le dépôt pour la refaire | ⬜ Non testé |
-| MA-02 | Exactitude des cartons saisis par rapport aux cartons papier | ⬜ Non testé (vérification manuelle) |
-| MA-03 | Exactitude du tirage saisi par rapport aux annonces en salle (cf. « points à vérifier » des rapports) | ⬜ Non testé (vérification manuelle) |
-| MA-04 | Écriture concurrente du tirage (deux `suivi.py` en même temps) | ⬜ Non testé |
+| MA-01 | Simulation des chances de carton plein | ✅ Automatisé : `probabilites.py`, tests PR-01 à PR-08 et RA-10 |
+| MA-02 | Exactitude des cartons saisis par rapport aux cartons papier | ⬜ Vérification manuelle (le format est contrôlé par DO-05, pas les numéros) |
+| MA-03 | Exactitude du tirage saisi par rapport aux annonces en salle (parties 6 à 10 plus longues, cf. rapports) | ⬜ Vérification manuelle (doublons et plages contrôlés par DO-06) |
+| MA-04 | Écriture concurrente du tirage (deux `suivi.py` en même temps) | ✅ Automatisé : SU-15 (verrou Linux/macOS ; sous Windows, pas de verrou) |
 
 ## Défauts connus
 
@@ -132,6 +148,9 @@ Aucun.
 | BUG-04 | `suivi.py` | Dossier absent ou oublié : trace d'erreur Python au lieu d'un message d'usage | Message « Partie introuvable » ou usage, code de sortie 1 | SU-13 |
 | BUG-05 | `statistiques_2026-11-11_orange.md` | La répartition par dizaine compte 1-10, 11-20, …, 81-90 alors que les colonnes annoncent 1-9, 10s, …, 80-90 (ex. partie 1 : 7 dans « 1-9 » au lieu de 6) | Tableau recalculé avec les plages annoncées | RA-06 |
 | BUG-06 | `rapport_final_2026-11-11_orange.md` | Dit que `statistiques_2026-11-11_orange.md` est périmé (parties 1 à 4) alors qu'il couvre maintenant les 10 parties | Mention retirée | RA-09 |
+| BUG-07 | `rapport_global_2026-11-11_orange.md` | Chance de carton plein à 55 tirages annoncée à 0,03 % au lieu de 0,31 % | Tableau remplacé par le calcul exact sur les 12 cartons | RA-10 |
+| BUG-08 | `rapport_global_2026-11-11_orange.md` | « 1 sur 3 000 par carton » : c'est la chance pour les 12 cartons ensemble ; pour un carton c'est 1 sur 42 000 | Phrase corrigée | (relu à la main) |
+| BUG-09 | `suivi.py` | Deux saisies simultanées pouvaient perdre des numéros (lecture puis écriture sans verrou) | Verrou de fichier et écriture atomique | SU-15 |
 
 ## Mise à jour de cette mémoire
 

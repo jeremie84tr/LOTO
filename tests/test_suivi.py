@@ -116,3 +116,23 @@ def test_sans_argument(run_script):  # SU-14
     r = run_script("suivi.py")
     assert r.returncode != 0
     assert "Traceback" not in r.stderr and "Usage" in r.stderr
+
+
+def test_ecritures_concurrentes(partie_tmp):  # SU-15
+    """20 suivi.py lancés en même temps : aucun numéro perdu, fichier toujours valide."""
+    import subprocess
+    import sys
+    from conftest import RACINE
+    d = partie_tmp()
+    procs = [subprocess.Popen([sys.executable, str(RACINE / "suivi.py"), str(d), str(n)],
+                              stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+             for n in range(1, 21)]
+    erreurs = [p.communicate()[1] for p in procs]
+    assert all(p.returncode == 0 for p in procs), erreurs
+    assert sorted(_tirage(d)) == list(range(1, 21))
+
+
+def test_pas_de_fichier_temporaire_restant(run_script, partie_tmp):  # SU-16
+    d = partie_tmp()
+    run_script("suivi.py", d, 5)
+    assert sorted(p.name for p in (d / "tirage").iterdir()) == [".numeros.lock", "numeros.json"]
