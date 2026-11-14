@@ -1,0 +1,57 @@
+name: Tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Scripts Python
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Installer les dépendances
+        run: pip install -r requirements-dev.txt
+
+      - name: Scripts exécutables et syntaxe
+        run: python -m py_compile nouvelle_partie.py suivi.py probabilites.py
+
+      - name: Suite de tests
+        run: python -m pytest -v --junitxml=rapport-tests.xml
+
+      - name: Publier le rapport de tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-tests-py${{ matrix.python-version }}
+          path: rapport-tests.xml
+
+  app:
+    name: App iOS / macOS (logique + compilation)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tests de la logique (Swift)
+        run: ./LotoApp/Tests/lancer.sh
+
+      - name: Compilation de l'app pour macOS
+        working-directory: LotoApp
+        run: |
+          xcodebuild -project Loto.xcodeproj -target Loto -sdk macosx \
+            -configuration Debug CODE_SIGNING_ALLOWED=NO build | tail -30
+          test "${PIPESTATUS[0]}" -eq 0
+        shell: bash

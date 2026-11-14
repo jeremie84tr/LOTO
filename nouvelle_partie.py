@@ -38,7 +38,11 @@ def main():
     p.add_argument("lieu")
     p.add_argument("--cartons", type=int, default=0, help="nombre de cartons à générer")
     a = p.parse_args()
+    if a.cartons < 0:
+        p.error("--cartons doit être positif ou nul")
     date.fromisoformat(a.date)
+    if not slug(a.lieu):
+        p.error(f"lieu invalide (aucune lettre ni chiffre) : {a.lieu!r}")
     dossier = RACINE / f"{a.date}_{slug(a.lieu)}"
     if dossier.exists():
         sys.exit(f"Existe déjà : {dossier}")

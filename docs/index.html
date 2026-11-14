@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carton Plein : aide</title>
+<meta name="description" content="Aide de Carton Plein, l'app de suivi de loto pour iPhone, iPad et Mac : cartons, quines, conseils et statistiques.">
+<link rel="icon" href="images/icone.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <img src="images/icone.png" alt="">
+  <h1>Carton Plein</h1>
+  <p>Suivez tous vos cartons de loto en direct sur iPhone, iPad et Mac. Ne laissez plus jamais passer une quine.</p>
+</header>
+
+<nav class="sommaire">
+  <a href="#demarrer">Premiers pas</a>
+  <a href="#cartons">Cartons</a>
+  <a href="#partie">Jouer une partie</a>
+  <a href="#conseils">Conseils</a>
+  <a href="#phases">Phases</a>
+  <a href="#statistiques">Statistiques</a>
+  <a href="#donnees">Données</a>
+  <a href="#faq">Questions</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+
+<h2 id="demarrer">Premiers pas</h2>
+<p>L'app s'organise en <strong>soirées</strong> : une soirée, c'est un lieu, une date, vos cartons, et les parties jouées ce soir-là.</p>
+<ol>
+  <li>Touchez <kbd>+</kbd> pour créer une soirée. Indiquez le lieu, la date et l'ordre des phases habituel de la salle.</li>
+  <li>Si vous rejouez les mêmes cartons, choisissez <em>Reprendre ceux de…</em> une soirée précédente.</li>
+  <li>Ouvrez la soirée, saisissez vos cartons dans <em>Mes cartons</em>, puis touchez <em>Nouvelle partie</em>.</li>
+</ol>
+<p>Au premier lancement, trois soirées d'exemple <strong>fictives</strong> sont chargées pour découvrir l'app. Supprimez-les quand vous voulez (glisser vers la gauche, ou clic droit sur Mac).</p>
+
+<h2 id="cartons">Saisir vos cartons</h2>
+<p>Un carton de loto compte 3 lignes de 5 numéros, rangés en 9 colonnes (1 à 9, 10 à 19… 80 à 90). Dans l'app, il suffit de <strong>taper les 15 numéros dans l'ordre de lecture</strong>, ligne par ligne. Ils sont placés tout seuls dans la bonne colonne.</p>
+<div class="carte">
+  <p style="margin-top:0">Par exemple, en tapant :</p>
+  <p><code>7 28 30 56 65</code><br><code>6 11 45 68 90</code><br><code>35 44 54 78 81</code></p>
+  <p>on obtient :</p>
+  <table class="grille">
+    <tr><td class="v">7</td><td></td><td class="v">28</td><td class="v">30</td><td></td><td class="v">56</td><td class="v">65</td><td></td><td></td></tr>
+    <tr><td class="v">6</td><td class="v">11</td><td></td><td></td><td class="v">45</td><td></td><td class="v">68</td><td></td><td class="v">90</td></tr>
+    <tr><td></td><td></td><td></td><td class="v">35</td><td class="v">44</td><td class="v">54</td><td></td><td class="v">78</td><td class="v">81</td></tr>
+  </table>
+</div>
+<p>L'app signale les erreurs : numéro en double, deux numéros d'une même dizaine sur une ligne, moins de 15 numéros…</p>
+<p>Donnez à chaque carton un <strong>numéro</strong> et, si vous le souhaitez, une <strong>planche</strong> (A, B…), le numéro de série imprimé dessus et le nom du joueur. Les cartons sont regroupés par planche, et les conseils indiquent toujours la planche concernée : pratique pour retrouver le bon carton sur la table.</p>
+
+<h2 id="partie">Jouer une partie</h2>
+<div class="duo">
+  <figure><img src="images/partie.jpg" alt="Écran d'une partie en cours avec les conseils" loading="lazy"><figcaption>Une partie en cours</figcaption></figure>
+  <figure><img src="images/tableau.jpg" alt="Tableau des numéros de 1 à 90" loading="lazy"><figcaption>Le tableau et vos cartons</figcaption></figure>
+</div>
+<h3>Saisir les numéros</h3>
+<ul>
+  <li><strong>Touchez le numéro</strong> annoncé sur le tableau de 1 à 90. Le dernier numéro sorti apparaît en rouge vif.</li>
+  <li>Ou <strong>tapez-le</strong> dans le champ <em>Numéro tiré</em> puis <em>Ajouter</em> (sur Mac, <kbd>Entrée</kbd> suffit). Vous pouvez en taper plusieurs d'un coup : <code>12 45 3</code>.</li>
+  <li>Une erreur ? Le bouton <kbd>↶</kbd> retire le dernier numéro. Pour en retirer un autre : <strong>appui long</strong> sur le tableau (clic droit sur Mac) puis <em>Retirer</em>.</li>
+</ul>
+<h3>Quand vous gagnez</h3>
+<p>Dès qu'un de vos cartons remplit la phase en cours, un grand bandeau vert <strong>« QUINE ! »</strong> s'affiche avec le carton concerné et l'appareil vibre. Criez-le dans la salle !</p>
+<figure><img src="images/victoire.jpg" alt="Bandeau vert « Quine 2 ! »" loading="lazy"><figcaption>La victoire est détectée automatiquement</figcaption></figure>
+<p>Touchez <em>Valider la victoire</em>, ou le bouton <em>Quine gagnée…</em> quand c'est un autre joueur qui gagne. Indiquez qui a gagné et, si vous voulez, le lot. La partie passe à la phase suivante.</p>
+<p>Validé trop vite ? Menu <kbd>⋯</kbd> › <em>Rouvrir la dernière phase gagnée</em>.</p>
+<h3>Annonces vocales</h3>
+<p>Menu <kbd>⋯</kbd> › <em>Annonces vocales</em> : l'app annonce à voix haute « Plus qu'un numéro pour la quine : le 39 » ou « Quine sur le carton 4 ! ». Pratique quand on a les yeux sur ses cartons papier.</p>
+
+<h2 id="conseils">Comprendre les conseils</h2>
+<p>Pendant la partie, l'app calcule en permanence ce qui manque à chacun de vos cartons pour la phase en cours :</p>
+<div class="conseil c-gagne">QUINE 2 sur le carton 004 (planche A) ! Criez-le !<small>Vert : vous avez gagné</small></div>
+<div class="conseil c-un">Plus qu'un numéro avant la quine : le 39 ou le 72 !<small>Rouge : un seul numéro suffit</small></div>
+<div class="conseil c-proche">Plus que 2 numéros, 7 et 40, avant la quine !<small>Orange : vous êtes tout près</small></div>
+<div class="conseil c-info">2 numéros gagnants sur 62 dans le sac : 3 % de chances au prochain tirage, 16 % dans les 5 prochains.<small>Gris : informations</small></div>
+<p>Sur le tableau et sur les cartons, les numéros <strong>entourés en orange</strong> sont ceux qu'il vous faut : trait épais pour ceux qui vous font gagner immédiatement.</p>
+<p>Les autres informations :</p>
+<ul>
+  <li><strong>Le numéro qui ferait avancer le plus de cartons</strong>.</li>
+  <li><strong>Une estimation</strong> du nombre de numéros avant votre quine ou carton plein, obtenue en simulant 3 000 tirages du reste du sac. Elle suppose que personne d'autre ne gagne avant vous.</li>
+  <li><strong>La moyenne habituelle</strong> : après combien de numéros cette phase est tombée lors de vos parties enregistrées.</li>
+</ul>
+<div class="carte"><strong>À savoir :</strong> le loto est un jeu de pur hasard. Les conseils vous aident à <em>suivre</em> vos cartons ; ils ne permettent pas de prévoir les numéros qui vont sortir.</div>
+
+<h2 id="phases">Quine, double quine, carton plein : l'ordre des phases</h2>
+<ul>
+  <li><strong>Quine</strong> : une ligne complète (5 numéros) sur un carton.</li>
+  <li><strong>Double quine</strong> : deux lignes complètes sur le même carton.</li>
+  <li><strong>Carton plein</strong> : les 15 numéros du carton.</li>
+</ul>
+<p>Chaque salle a ses habitudes. Au début de chaque partie, choisissez l'ordre des phases, par exemple :</p>
+<ul>
+  <li>Quine → Double quine → Carton plein (classique)</li>
+  <li>Quine → Quine → Double quine → Carton plein</li>
+  <li>Carton plein seul</li>
+</ul>
+<p>Utilisez les modèles proposés, ou composez le vôtre avec <em>Ajouter une phase</em> et les flèches ▲ ▼. L'ordre se modifie aussi en cours de partie (menu <kbd>⋯</kbd> › <em>Modifier l'ordre des phases</em>) : les phases déjà jouées sont conservées.</p>
+<figure><img src="images/phases.jpg" alt="Choix de l'ordre des phases" loading="lazy"><figcaption>L'ordre des phases, au choix</figcaption></figure>
+<p><strong>Deux quines de suite ?</strong> Si vous avez gagné la première quine, la ligne gagnante ne compte plus pour la seconde : l'app attend une autre ligne.</p>
+
+<h2 id="statistiques">Statistiques</h2>
+<p>Chaque soirée a ses statistiques ; <em>Statistiques globales</em> regroupe toutes vos soirées :</p>
+<ul>
+  <li>après combien de numéros tombent la quine, la double quine et le carton plein (moyenne, minimum, maximum) ;</li>
+  <li>le nombre de sorties de chaque numéro, les plus et les moins sortis, ceux absents depuis le plus de parties ;</li>
+  <li>la répartition des numéros par colonne, comparée à la répartition attendue ;</li>
+  <li>le nombre moyen de cases cochées par carton et vos victoires.</li>
+</ul>
+<p>Pour savoir quand les phases tombent, pensez à <strong>valider chaque phase</strong> (gagnée par vous ou par un autre) pendant la partie.</p>
+
+<h2 id="donnees">Vos données</h2>
+<ul>
+  <li>Tout est <strong>enregistré automatiquement</strong> sur votre appareil, après chaque numéro.</li>
+  <li><strong>Exporter</strong> : <kbd>⋯</kbd> en haut de la liste des soirées › <em>Exporter toutes les données…</em> (fichier JSON). Gardez-le en sauvegarde ou transférez-le sur un autre appareil.</li>
+  <li><strong>Importer</strong> : <kbd>⋯</kbd> › <em>Importer un fichier…</em>. Les soirées déjà présentes sont mises à jour, les autres ajoutées.</li>
+  <li><strong>Exemples</strong> : <kbd>⋯</kbd> › <em>Recharger les exemples</em> remet les soirées de démonstration.</li>
+</ul>
+<p>L'app ne collecte rien et n'envoie rien sur Internet. Voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+
+<h2 id="faq">Questions fréquentes</h2>
+<details>
+  <summary>L'app n'a pas vu ma quine.</summary>
+  <p>Vérifiez d'abord le carton dans <em>Mes cartons</em> : une erreur de saisie est vite arrivée. Vérifiez ensuite la phase en cours dans le bandeau du haut : si la partie en est à la double quine, une seule ligne ne suffit plus. Enfin, si vous avez déjà gagné une quine avec cette ligne, elle ne compte pas pour la quine suivante.</p>
+</details>
+<details>
+  <summary>J'ai validé une phase par erreur.</summary>
+  <p>Menu <kbd>⋯</kbd> de la partie › <em>Rouvrir la dernière phase gagnée</em>. Retirer un numéro saisi avant la fin d'une phase rouvre aussi cette phase automatiquement.</p>
+</details>
+<details>
+  <summary>Où va le 90 ? Et les numéros de 1 à 9 ?</summary>
+  <p>Première colonne : 1 à 9. Dernière colonne : 80 à 90 (elle compte 11 numéros). L'app s'en charge toute seule.</p>
+</details>
+<details>
+  <summary>Les statistiques permettent-elles de deviner les prochains numéros ?</summary>
+  <p>Non. Chaque tirage est indépendant : un numéro « en retard » n'a pas plus de chances de sortir qu'un autre. Les statistiques racontent vos soirées passées ; les conseils, eux, reposent sur vos cartons et les numéros encore dans le sac.</p>
+</details>
+<details>
+  <summary>Mes données sont-elles synchronisées entre mon iPhone et mon Mac ?</summary>
+  <p>Pas automatiquement. Utilisez <em>Exporter</em> sur un appareil puis <em>Importer</em> sur l'autre (par AirDrop, e-mail ou iCloud Drive).</p>
+</details>
+<details>
+  <summary>L'app permet-elle de jouer ou de parier ?</summary>
+  <p>Non. Carton Plein est un outil de suivi pour les lotos joués en salle avec de vrais cartons. Il n'y a ni mise, ni gain, ni jeu en ligne dans l'app.</p>
+</details>
+<details>
+  <summary>Combien de cartons puis-je suivre ?</summary>
+  <p>Autant que vous voulez. Les conseils montrent en priorité les cartons les plus proches de gagner.</p>
+</details>
+
+<h2 id="contact">Contact</h2>
+<p>Une question, un problème, une idée ? Écrivez-nous en ouvrant un ticket sur <a href="https://github.com/jeremie84tr/LOTO/issues">la page du projet</a>. Précisez votre appareil (iPhone, iPad ou Mac) et la version de l'app (visible dans l'App Store).</p>
+
+</main>
+<footer>
+  Carton Plein · <a href="confidentialite.html">Confidentialité</a><br>
+  Carton Plein n'est pas affilié à la Française des Jeux.
+</footer>
+</body>
+</html>
