@@ -4,22 +4,16 @@ import PhotosUI
 import UIKit
 #endif
 
-/// Une photo de carton et ce que Vision y a lu.
-struct LecturePhoto: Identifiable {
-    let id = UUID()
-    let image: CGImage
-    let resultat: LectureCarton.Resultat
-}
-
 extension LectureCarton.Position: Identifiable {
     var id: Int { ligne * 9 + colonne }
 }
 
 // MARK: - Prise de la photo
 
-/// Boutons « Photographier le carton » et « Choisir une photo », puis lecture par Vision.
+/// Boutons « Photographier » et « Choisir une photo », puis détection et lecture des cartons.
 struct BoutonsPhotoCarton: View {
-    let lu: (LecturePhoto) -> Void
+    var titreCamera = "Photographier le carton"
+    let lu: (PhotoAnalysee) -> Void
 
     @State private var element: PhotosPickerItem?
     @State private var cameraOuverte = false
@@ -30,13 +24,13 @@ struct BoutonsPhotoCarton: View {
         if enCours {
             HStack(spacing: 10) {
                 ProgressView()
-                Text("Lecture du carton…").foregroundStyle(.secondary)
+                Text("Recherche et lecture des cartons…").foregroundStyle(.secondary)
             }
         } else {
             #if os(iOS)
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 Button { cameraOuverte = true } label: {
-                    Label("Photographier le carton", systemImage: "camera")
+                    Label(titreCamera, systemImage: "camera")
                 }
                 .fullScreenCover(isPresented: $cameraOuverte) {
                     AppareilPhoto { data in lire(data) }.ignoresSafeArea()
@@ -70,8 +64,9 @@ struct BoutonsPhotoCarton: View {
             defer { enCours = false }
             do {
                 let image = try LecteurVision.image(depuis: data)
-                let numeros = try await LecteurVision.lireNumeros(image)
-                lu(LecturePhoto(image: image, resultat: LectureCarton.analyser(numeros)))
+                lu(try await DetecteurCartons.analyser(image))
+            } catch let e as DetecteurCartons.Erreur {
+                erreur = e.localizedDescription
             } catch {
                 erreur = "Lecture impossible : \(error.localizedDescription)"
             }

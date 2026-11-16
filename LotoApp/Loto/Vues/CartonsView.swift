@@ -6,6 +6,7 @@ struct CartonsView: View {
 
     @State private var edition: Carton?
     @State private var estNouveau = false
+    @State private var photoOuverte = false
 
     var body: some View {
         let s = magasin.soiree(soireeID)
@@ -51,7 +52,15 @@ struct CartonsView: View {
         .navigationTitle("Cartons")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
+                Button { photoOuverte = true } label: { Label("Lire des cartons en photo", systemImage: "camera.viewfinder") }
+            }
+            ToolbarItem(placement: .primaryAction) {
                 Button(action: nouveau) { Label("Ajouter un carton", systemImage: "plus") }
+            }
+        }
+        .sheet(isPresented: $photoOuverte) {
+            CartonsDetectesView(plusieurs: true, existants: s?.cartons ?? [], planche: s?.cartons.last?.planche) { grilles, planche in
+                ajouter(grilles, planche: planche)
             }
         }
         .sheet(item: $edition) { c in
@@ -59,6 +68,17 @@ struct CartonsView: View {
             CartonEditor(carton: c, idsPris: autres) { modifie in
                 magasin.enregistrerCarton(modifie, ancienID: estNouveau ? nil : c.id, dans: soireeID)
             }
+        }
+    }
+
+    /// Ajoute les cartons lus en photo, avec les numéros suivants de la soirée.
+    private func ajouter(_ grilles: [[[Int?]]], planche: String?) {
+        guard let s = magasin.soiree(soireeID) else { return }
+        var suivant = Int(s.prochainIDCarton) ?? s.cartons.count + 1
+        for g in grilles {
+            magasin.enregistrerCarton(Carton(id: String(format: "%03d", suivant), planche: planche, grille: g),
+                                      ancienID: nil, dans: soireeID)
+            suivant += 1
         }
     }
 
@@ -75,6 +95,7 @@ struct CartonEditor: View {
     @State private var carton: Carton
     @State private var texte: String
     @State private var lecture: LecturePhoto?
+    @State private var photoMulti: PhotoAnalysee?
     let idsPris: Set<String>
     let enregistrer: (Carton) -> Void
 
@@ -113,11 +134,14 @@ struct CartonEditor: View {
                     Text("Tapez les numéros dans l'ordre de lecture, ligne par ligne (5 par ligne). Ils sont rangés automatiquement dans leur colonne.")
                 }
                 Section {
-                    BoutonsPhotoCarton { lecture = $0 }
+                    BoutonsPhotoCarton { photo in
+                        // Un seul carton trouvé : on passe directement à sa vérification.
+                        if photo.cartons.count == 1 { lecture = photo.cartons[0].lecture } else { photoMulti = photo }
+                    }
                 } header: {
                     Text("Lire le carton sur une photo")
                 } footer: {
-                    Text("Cadrez un seul carton, à plat et bien éclairé. Vous vérifierez chaque numéro lu avant qu'il soit reporté.")
+                    Text("Carton à plat et bien éclairé ; une photo de biais est redressée. S'il y a plusieurs cartons sur la photo, vous choisirez lequel. Vous vérifierez chaque numéro lu avant qu'il soit reporté.")
                 }
                 Section("Aperçu") {
                     CartonGrilleView(carton: Carton(id: id, grille: analyse.grille))
@@ -145,6 +169,11 @@ struct CartonEditor: View {
         .sheet(item: $lecture) { l in
             ValidationLectureView(lecture: l) { grille in
                 texte = Carton(id: carton.id, grille: grille).texteSaisie
+            }
+        }
+        .sheet(item: $photoMulti) { p in
+            CartonsDetectesView(plusieurs: false, photo: p) { grilles, _ in
+                if let g = grilles.first { texte = Carton(id: carton.id, grille: g).texteSaisie }
             }
         }
         .tailleFeuille()

@@ -47,6 +47,72 @@ verifier(LectureCarton.erreursBloquantes(grille).isEmpty, "carton valide accept�
 var double = grille; double[2][0] = 7
 verifier(LectureCarton.erreursBloquantes(double).contains("En double : 7."), "numéro en double refusé")
 
+print("Planche de plusieurs cartons")
+/// Place un carton sur une planche : origine (x0, y0), case de 0,04 × 0,05, inclinaison éventuelle.
+func surPlanche(_ g: [[Int?]], x0: Double, y0: Double, pente: Double = 0) -> [NumeroLu] {
+    g.enumerated().flatMap { l, ligne in
+        ligne.enumerated().compactMap { c, v in
+            v.map { n -> NumeroLu in
+                let x = x0 + Double(c) * 0.04
+                return NumeroLu(valeur: n, confiance: 1,
+                                cadre: CGRect(x: x, y: y0 + Double(l) * 0.05 + pente * (x - x0), width: 0.02, height: 0.02))
+            }
+        }
+    }
+}
+let autre: [[Int?]] = [[nil, 16, nil, nil, 41, 50, nil, 76, 86], [nil, 10, 26, nil, nil, 51, 66, 73, nil], [8, nil, 22, 32, nil, nil, 62, nil, 82]]
+// 2 colonnes de 2 cartons ; 0,2 d'écart vertical entre cartons (0,05 entre lignes).
+let planche = surPlanche(grille, x0: 0.05, y0: 0.1) + surPlanche(autre, x0: 0.05, y0: 0.32)
+    + surPlanche(autre, x0: 0.55, y0: 0.12, pente: 0.05) + surPlanche(grille, x0: 0.55, y0: 0.34, pente: 0.05)
+let groupes = LectureCarton.regrouper(planche)
+verifier(groupes.count == 4 && groupes.allSatisfy { $0.count == 15 }, "4 cartons de 15 numéros retrouvés sur la planche")
+verifier(groupes.map { LectureCarton.analyser($0).cases.map { $0.map(\.valeur) } }.filter { $0 == grille }.count == 2,
+         "chaque groupe redonne la bonne grille")
+var troues = surPlanche(grille, x0: 0.05, y0: 0.1)
+troues.removeAll { [6, 45, 68, 90].contains($0.valeur) } // ligne 2 : seul le 11 est lu
+let geo = LectureCarton.analyser(troues, garderLignesIsolees: true).geometrie
+verifier(geo != nil, "une ligne avec un seul numéro lu compte encore (géométrie retrouvée)")
+let incline = LectureCarton.analyser(surPlanche(grille, x0: 0.05, y0: 0.1, pente: 0.05)).geometrie!
+verifier(abs(incline.cellule(0, 8).midY - (0.11 + 0.05 * 0.32)) < 0.003, "la pente des lignes est prise en compte")
+verifier(LectureCarton.sensDeLecture(planche) > 0, "planche à l'endroit : les numéros croissent vers la droite")
+let renversee = planche.map { n -> NumeroLu in var m = n; m.cadre.origin.x = 1 - n.cadre.maxX; return m }
+verifier(LectureCarton.sensDeLecture(renversee) < 0, "planche retournée : sens négatif")
+
+print("Double lecture case par case")
+let base = LectureCarton.analyser(lus(grille, confiance: 0.5))
+var parCase = grille.map { $0.map { $0.map { [$0] } ?? [] } }
+parCase[1][0] = [9]       // 6 relu « 9 »
+parCase[2][7] = []        // 78 pas retrouvé
+let fusion = LectureCarton.fusionner(base, parCase: parCase)
+verifier(!fusion.cases[0][0].aVerifier, "lu pareil deux fois : sûr, même si la lecture était peu nette")
+verifier(fusion.cases[1][0].valeur == 6 && fusion.cases[1][0].aVerifier && fusion.cases[1][0].alternatives.contains(9),
+         "6 relu « 9 » : à vérifier, avec 9 en suggestion")
+verifier(fusion.cases[2][7].aVerifier, "numéro non retrouvé en relisant : à vérifier")
+var manque = lus(grille); manque.removeAll { $0.valeur == 30 }
+let completee = LectureCarton.fusionner(LectureCarton.analyser(manque), parCase: grille.map { $0.map { $0.map { [$0] } ?? [] } })
+verifier(completee.cases[0][3].valeur == 30 && completee.cases[0][3].aVerifier && completee.numerosLus == 15,
+         "numéro vu seulement case par case : ajouté, mais à vérifier")
+
+print("Aucun carton reconnu : grille estimée")
+func nombre(_ v: Int, _ x: Double, _ y: Double, alternatives: [Int] = []) -> NumeroLu {
+    NumeroLu(valeur: v, confiance: 0.99, cadre: CGRect(x: x, y: y, width: 0.04, height: 0.04), alternatives: alternatives)
+}
+let bruit = [nombre(12, 0.5, 0.05), nombre(45, 0.1, 0.9), nombre(3, 0.92, 0.75), nombre(27, 0.33, 0.62)]
+verifier(LectureCarton.estimerGrille(bruit).numerosLus == 0 && LectureCarton.estimerGrille(bruit).geometrie == nil,
+         "des nombres épars sans structure : grille vide, aucun numéro proposé")
+let estimee = LectureCarton.estimerGrille(lus(grille) + bruit)
+verifier(estimee.cases.map { $0.map(\.valeur) } == grille, "carton + nombres parasites : seuls les numéros du carton sont gardés")
+verifier(estimee.remarques.contains { $0.hasPrefix("Ignoré hors du carton") }, "les nombres hors du carton sont signalés")
+verifier(estimee.geometrie.map { abs($0.a - 0.1) < 0.01 && abs($0.pas - 0.15) < 0.01 } == true, "grille théorique retrouvée")
+var deplace = lus(grille)
+deplace[deplace.firstIndex { $0.valeur == 78 }!].valeur = 18 // 78 lu « 18 », sans autre lecture
+let sansAutre = LectureCarton.estimerGrille(deplace)
+verifier(sansAutre.cases[2][7].valeur == nil && sansAutre.cases[2][7].aVerifier && sansAutre.cases[2][7].alternatives == [78]
+         && sansAutre.cases[2][1].valeur == nil, "un 18 à la place du 78 n'est pas gardé : case à vérifier, 78 suggéré")
+deplace[deplace.firstIndex { $0.valeur == 18 }!].alternatives = [78]
+verifier(LectureCarton.estimerGrille(deplace).cases[2][7].valeur == 78 && LectureCarton.estimerGrille(deplace).cases[2][7].aVerifier,
+         "si Vision propose aussi 78, c'est lui qui est retenu, à vérifier")
+
 print("Objectifs")
 let tires: Set<Int> = [7, 28, 30, 56, 6, 11, 45]
 let q = Analyse.objectif(carton: carton, type: .quine, tires: tires)!

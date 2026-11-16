@@ -24,11 +24,23 @@ enum LecteurVision {
         return image
     }
 
+    /// File réservée à Vision. Ses appels sont bloquants : lancés dans la réserve de fils de Swift
+    /// Concurrency (Task.detached), plusieurs à la fois peuvent l'épuiser et tout bloquer.
+    private static let file = DispatchQueue(label: "loto.vision", qos: .userInitiated)
+
+    /// Exécute un travail Vision sur sa file, sans bloquer la réserve de fils de Swift Concurrency.
+    static func executer<T>(_ travail: @escaping () throws -> T) async throws -> T {
+        try await withCheckedThrowingContinuation { suite in
+            file.async { suite.resume(with: Result { try travail() }) }
+        }
+    }
+
     /// Tous les nombres de 1 ou 2 chiffres visibles sur l'image, avec leur position et leur fiabilité.
-    static func lireNumeros(_ image: CGImage) async throws -> [NumeroLu] {
-        try await Task.detached(priority: .userInitiated) {
+    /// `precis == false` : lecture rapide, pour repérer les cartons et leur sens, jamais pour les numéros retenus.
+    static func lireNumeros(_ image: CGImage, precis: Bool = true) async throws -> [NumeroLu] {
+        try await executer {
             let requete = VNRecognizeTextRequest()
-            requete.recognitionLevel = .accurate
+            requete.recognitionLevel = precis ? .accurate : .fast
             requete.usesLanguageCorrection = false // pas de « correction » des nombres en mots
             requete.recognitionLanguages = ["fr-FR"]
             requete.minimumTextHeight = 0.015
@@ -57,7 +69,44 @@ enum LecteurVision {
                 }
             }
             return resultat
-        }.value
+        }
+    }
+
+    /// Relit chaque zone (case du carton) séparément, en mode rapide : sur un nombre isolé, il se
+    /// trompe moins que le mode précis, conçu pour des lignes de texte. Zones normalisées, origine
+    /// en haut à gauche ; renvoie les nombres de 1 ou 2 chiffres lus dans chacune.
+    static func lireCases(_ image: CGImage, zones: [CGRect]) async throws -> [[Int]] {
+        try await executer {
+            let w = CGFloat(image.width), h = CGFloat(image.height)
+            let sequence = VNSequenceRequestHandler()
+            return try zones.map { zone in
+                let px = CGRect(x: zone.minX * w, y: zone.minY * h, width: zone.width * w, height: zone.height * h)
+                    .integral.intersection(CGRect(x: 0, y: 0, width: w, height: h))
+                guard !px.isNull, px.width >= 4, px.height >= 4, let decoupe = image.cropping(to: px) else { return [] }
+                let requete = VNRecognizeTextRequest()
+                requete.recognitionLevel = .fast
+                requete.usesLanguageCorrection = false
+                try sequence.perform([requete], on: agrandie(decoupe, hauteurMin: 160))
+                return (requete.results ?? []).flatMap { o in
+                    nombres(dans: o.topCandidates(1).first?.string ?? "").compactMap { m in
+                        m.texte.count <= 2 && !m.texte.hasPrefix("0") ? Int(m.texte) : nil
+                    }
+                }
+            }
+        }
+    }
+
+    /// Les petites cases sont agrandies : les chiffres trop petits se lisent mal.
+    private static func agrandie(_ image: CGImage, hauteurMin: Int) -> CGImage {
+        guard image.height < hauteurMin else { return image }
+        let k = CGFloat(hauteurMin) / CGFloat(image.height)
+        let w = Int(CGFloat(image.width) * k), h = hauteurMin
+        guard let ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: 0,
+                                  space: CGColorSpaceCreateDeviceRGB(),
+                                  bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return image }
+        ctx.interpolationQuality = .high
+        ctx.draw(image, in: CGRect(x: 0, y: 0, width: w, height: h))
+        return ctx.makeImage() ?? image
     }
 
     private static func nombres(dans texte: String) -> [(texte: String, plage: Range<String.Index>)] {
