@@ -6,5 +6,5 @@ cd "$(dirname "$0")/.."
 TMP="${TMPDIR:-/tmp}"
 python3 outils/exporter_historique.py ../parties -o "$TMP/loto-historique.json" \
     --phases quine,quine,doubleQuine,cartonPlein >/dev/null
-swiftc -O Loto/Modele/Modeles.swift Loto/Modele/Analyse.swift Loto/Modele/Statistiques.swift Tests/main.swift -o "$TMP/loto-tests"
+swiftc -O Loto/Modele/Modeles.swift Loto/Modele/Analyse.swift Loto/Modele/Statistiques.swift Loto/Modele/LectureCarton.swift Tests/main.swift -o "$TMP/loto-tests"
 "$TMP/loto-tests" "$TMP/loto-historique.json" Loto/Ressources/exemples.json

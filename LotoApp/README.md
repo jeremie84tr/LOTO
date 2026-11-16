@@ -5,6 +5,7 @@ App SwiftUI (une seule cible multiplateforme, iOS 17+ et macOS 14+) pour suivre 
 ## Ce qu'elle fait
 
 - **Soirées** (lieu, date, notes), avec leurs **cartons** regroupés par **planche**. On peut reprendre les cartons d'une soirée précédente.
+- **Lecture des cartons par photo** (appareil photo ou photothèque, framework Vision, tout sur l'appareil). Les numéros lus passent par un écran de vérification : chaque numéro douteux (lecture peu nette, autre lecture possible, position sur le carton qui ne correspond pas à sa dizaine, doublon) doit être confirmé ou corrigé avec un zoom sur la photo, la grille doit former un carton possible (3 × 5 numéros, chacun dans sa colonne), et il faut attester l'avoir comparée au carton papier.
 - **Parties** avec un **ordre de phases libre**, choisi à chaque partie : quine, double quine, carton plein, dans n'importe quel ordre et autant de fois qu'il faut (ex. Orange : Quine → Quine → Double quine → Carton plein). L'ordre peut être modifié en cours de partie.
 - **Saisie du tirage** : on touche le numéro sur le tableau 1–90, ou on le tape (plusieurs d'un coup : `12 45 3`). Appui long ou clic droit pour retirer un numéro, bouton pour annuler le dernier.
 - **Détection automatique** quand un de vos cartons gagne la phase en cours (bandeau vert, vibration, annonce vocale en option).
@@ -58,5 +59,6 @@ Le site d'aide et la politique de confidentialité sont dans [`../docs/`](../doc
 - `Loto/Modele/Modeles.swift` : cartons, phases, parties, soirées.
 - `Loto/Modele/Analyse.swift` : ce qu'il manque à chaque carton, conseils, probabilités, simulation.
 - `Loto/Modele/Statistiques.swift` : statistiques sur un ensemble de parties.
+- `Loto/Modele/LectureCarton.swift` : de la photo à la grille, contrôles de la lecture ; `LecteurVision.swift` : appel à Vision.
 - `Loto/Modele/Magasin.swift` : stockage JSON et modifications.
 - `Loto/Vues/` : écrans SwiftUI (`PartieView` = suivi en direct).

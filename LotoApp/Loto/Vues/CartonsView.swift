@@ -74,6 +74,7 @@ struct CartonEditor: View {
     @Environment(\.dismiss) private var dismiss
     @State private var carton: Carton
     @State private var texte: String
+    @State private var lecture: LecturePhoto?
     let idsPris: Set<String>
     let enregistrer: (Carton) -> Void
 
@@ -111,6 +112,13 @@ struct CartonEditor: View {
                 } footer: {
                     Text("Tapez les numéros dans l'ordre de lecture, ligne par ligne (5 par ligne). Ils sont rangés automatiquement dans leur colonne.")
                 }
+                Section {
+                    BoutonsPhotoCarton { lecture = $0 }
+                } header: {
+                    Text("Lire le carton sur une photo")
+                } footer: {
+                    Text("Cadrez un seul carton, à plat et bien éclairé. Vous vérifierez chaque numéro lu avant qu'il soit reporté.")
+                }
                 Section("Aperçu") {
                     CartonGrilleView(carton: Carton(id: id, grille: analyse.grille))
                     ForEach(erreurs, id: \.self) { e in
@@ -132,6 +140,11 @@ struct CartonEditor: View {
                     }
                     .disabled(!erreurs.isEmpty)
                 }
+            }
+        }
+        .sheet(item: $lecture) { l in
+            ValidationLectureView(lecture: l) { grille in
+                texte = Carton(id: carton.id, grille: grille).texteSaisie
             }
         }
         .tailleFeuille()

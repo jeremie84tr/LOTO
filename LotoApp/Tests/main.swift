@@ -20,6 +20,33 @@ verifier(saisie.grille == grille, "les numéros tombent dans les bonnes colonnes
 verifier(!Carton.grille(depuis: [1, 5, 20, 30, 40, 11, 12, 13, 14, 15, 60, 61, 62, 63, 64]).erreurs.isEmpty,
          "deux numéros de la même dizaine sur une ligne sont refusés")
 
+print("Lecture d'un carton sur photo")
+/// Simule la photo du carton 001 : colonne c ↔ x = 0.05 + c × 0.1, ligne l ↔ y = 0.3 + l × 0.15.
+func lus(_ g: [[Int?]], confiance: Float = 0.99) -> [NumeroLu] {
+    g.enumerated().flatMap { l, ligne in
+        ligne.enumerated().compactMap { c, v in
+            v.map { NumeroLu(valeur: $0, confiance: confiance,
+                             cadre: CGRect(x: 0.03 + Double(c) * 0.1, y: 0.28 + Double(l) * 0.15, width: 0.04, height: 0.04)) }
+        }
+    }
+}
+let lecture = LectureCarton.analyser(lus(grille) + [NumeroLu(valeur: 9, confiance: 1, cadre: CGRect(x: 0.8, y: 0.05, width: 0.04, height: 0.04))])
+verifier(lecture.cases.map { $0.map(\.valeur) } == grille && lecture.casesAVerifier == 0, "lecture nette : grille retrouvée, rien à vérifier")
+verifier(lecture.remarques.contains { $0.contains("Ignoré") && $0.contains("9") }, "un nombre isolé hors grille est ignoré")
+var mal = lus(grille)
+mal[mal.firstIndex { $0.valeur == 78 }!].valeur = 18 // 78 lu « 18 », à droite du carton
+let lectureFausse = LectureCarton.analyser(mal)
+verifier(lectureFausse.cases[2][1].valeur == 18 && lectureFausse.cases[2][1].aVerifier,
+         "un 18 lu à la place du 78 est signalé (position incohérente)")
+verifier(LectureCarton.analyser(lus(grille, confiance: 0.5)).casesAVerifier == 15, "lecture peu nette : tout est à vérifier")
+var incomplet = lus(grille); incomplet.removeAll { $0.valeur == 45 }
+let lectureIncomplete = LectureCarton.analyser(incomplet)
+verifier(lectureIncomplete.remarques.contains("Ligne 2 : 4 numéros lus au lieu de 5."), "numéro manquant signalé")
+verifier(!LectureCarton.erreursBloquantes(lectureIncomplete.cases.map { $0.map(\.valeur) }).isEmpty, "grille incomplète refusée")
+verifier(LectureCarton.erreursBloquantes(grille).isEmpty, "carton valide accepté (même si 7 est au-dessus de 6)")
+var double = grille; double[2][0] = 7
+verifier(LectureCarton.erreursBloquantes(double).contains("En double : 7."), "numéro en double refusé")
+
 print("Objectifs")
 let tires: Set<Int> = [7, 28, 30, 56, 6, 11, 45]
 let q = Analyse.objectif(carton: carton, type: .quine, tires: tires)!
