@@ -40,15 +40,15 @@ Sur 15 numéros par carton, le meilleur cumul est 97 cases sur 10 parties (carto
 
 ## Chances de carton plein
 
-Simulation avec des cartons de même format et des tirages de même longueur (20 000 essais) :
+Calcul exact avec les 12 cartons joués (`./probabilites.py parties/2026-11-11_orange 40 48 55`) :
 
 | Numéros tirés | Chance d'un carton plein |
 |---|---|
-| 40 | 0,0 % |
+| 40 | 0,001 % |
 | 48 | 0,03 % |
-| 55 | 0,03 % |
+| 55 | 0,31 % |
 
-Un carton plein était très improbable (environ 1 sur 3 000 par carton à 48 tirages) et n'est pas arrivé.
+Un carton plein était très improbable (environ 1 sur 3 500 pour l'ensemble des 12 cartons à 48 tirages, 1 sur 42 000 pour un carton donné) et n'est pas arrivé.
 
 ## Statistiques des numéros (10 parties)
 
