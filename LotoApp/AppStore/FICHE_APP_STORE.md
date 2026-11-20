@@ -152,8 +152,12 @@ Aucune donnée n'est collectée ni envoyée sur Internet.
 | Emplacement App Store Connect | Fichiers | Taille |
 |---|---|---|
 | iPhone 6,9 pouces | `captures/iphone-6.9/*.png` | 1320 × 2868 |
+| iPhone 6,3 pouces | `captures/iphone-6.3/*.png` | 1206 × 2622 |
+| iPhone 6,1 pouces | `captures/iphone-6.1/*.png` | 1179 × 2556 |
 | iPad 13 pouces | `captures/ipad-13/*.png` | 2064 × 2752 |
 | Icône | fournie par Xcode depuis `Assets.xcassets` (1024 × 1024, sans transparence) | — |
+
+Si App Store Connect refuse les captures 1320 × 2868 (l'emplacement affiché accepte seulement 2556 × 1179, 2622 × 1206 ou leurs versions portrait), envoyez celles de `captures/iphone-6.3/` ou de `captures/iphone-6.1/`. Les dimensions 1920 × 886 et 886 × 1920 sont celles des **aperçus vidéo**, pas des captures.
 
 Les dossiers `captures/brutes/` contiennent les mêmes écrans sans habillage, aux dimensions exactes de l'appareil : vous pouvez les envoyer tels quels si vous préférez.
 `promo/` contient l'icône 1024 × 1024 et une bannière 1920 × 1080 pour un site ou les réseaux sociaux.

@@ -47,7 +47,7 @@ Le script `outils/exporter_historique.py` convertit les dossiers `parties/` du d
 Tout est dans [`AppStore/`](AppStore/FICHE_APP_STORE.md) :
 
 - `FICHE_APP_STORE.md` : textes prêts à copier-coller (nom, sous-titre, description, mots-clés, URL, confidentialité, classification, notes pour la vérification) ;
-- `captures/iphone-6.9/` (1320 × 2868) et `captures/ipad-13/` (2064 × 2752) : visuels habillés ; `captures/brutes/` : les mêmes sans habillage ;
+- `captures/iphone-6.9/` (1320 × 2868), `captures/iphone-6.3/` (1206 × 2622), `captures/iphone-6.1/` (1179 × 2556) et `captures/ipad-13/` (2064 × 2752) : visuels habillés ; `captures/brutes/` : les mêmes sans habillage ;
 - `promo/` : icône 1024 × 1024 et bannière 1920 × 1080 ;
 - `outils/captures.sh` puis `outils/composer.sh` pour tout régénérer.
 
