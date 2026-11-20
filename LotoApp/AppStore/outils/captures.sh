@@ -32,15 +32,15 @@ simulateur() { # $1 = nom du modèle, $2 = dossier
         -derivedDataPath "$DD" CODE_SIGNING_ALLOWED=NO build -quiet
     xcrun simctl install "$UDID" "$DD/Build/Products/Debug-iphonesimulator/Loto.app"
     echo "$PLANS" | while IFS='|' read -r nom donnees args; do
-        xcrun simctl terminate "$UDID" fr.loto.suivi 2>/dev/null || true
+        xcrun simctl terminate "$UDID" fr.lohyer.loto 2>/dev/null || true
         cp "$TRAVAIL/$donnees.json" "$TRAVAIL/donnees.json"
         # shellcheck disable=SC2086
-        xcrun simctl launch "$UDID" fr.loto.suivi -fichierDonnees "$TRAVAIL/donnees.json" $args >/dev/null
+        xcrun simctl launch "$UDID" fr.lohyer.loto -fichierDonnees "$TRAVAIL/donnees.json" $args >/dev/null
         sleep 12
         xcrun simctl io "$UDID" screenshot "$BRUT/$2/$nom.png" >/dev/null 2>&1
         echo "  $2/$nom.png"
     done
-    xcrun simctl terminate "$UDID" fr.loto.suivi 2>/dev/null || true
+    xcrun simctl terminate "$UDID" fr.lohyer.loto 2>/dev/null || true
 }
 
 case " $CIBLES " in *" iphone "*) echo "iPhone 6,9 pouces"; simulateur "iPhone 17 Pro Max" iphone ;; esac

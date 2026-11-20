@@ -5,7 +5,7 @@ Chaque bloc correspond à un champ de App Store Connect. Les limites de caractè
 > **À lire avant de soumettre**
 > 1. **Nom de l'app.** « Loto » est une marque déposée de la Française des Jeux, et le nom est sans doute déjà pris sur l'App Store. Je propose **Carton Plein : suivi de loto**. Le nom affiché sous l'icône reste « Loto » (`CFBundleDisplayName`, modifiable dans Xcode).
 > 2. **Site d'aide.** Les URL ci-dessous supposent que GitHub Pages est activé sur le dossier `docs/` de la branche `main` (GitHub › Settings › Pages › *Deploy from a branch* › `main` / `/docs`). Le dépôt doit être public, sinon il faut un compte GitHub payant.
-> 3. **Identifiant.** Le bundle ID est `fr.loto.suivi`. Changez-le dans Xcode (*Signing & Capabilities*) s'il ne vous convient pas, **avant** de créer la fiche.
+> 3. **Identifiant.** Le bundle ID est `fr.lohyer.loto`. Changez-le dans Xcode (*Signing & Capabilities*) s'il ne vous convient pas, **avant** de créer la fiche.
 
 ---
 
