@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")/.."
 BIN="${TMPDIR:-/tmp}/loto-composer"
 swiftc -O outils/composer.swift -o "$BIN"
-mkdir -p captures/iphone-6.9 captures/ipad-13 promo
+mkdir -p captures/iphone-6.9 captures/iphone-6.3 captures/iphone-6.1 captures/ipad-13 promo
 
 legende() { # nom → « titre|sous-titre »
     case "$1" in
@@ -29,6 +29,8 @@ habiller() { # $1 dossier brut, $2 dossier final, $3 largeur, $4 hauteur, $5 mod
 }
 
 habiller iphone iphone-6.9 1320 2868 iphone
+habiller iphone iphone-6.3 1206 2622 iphone
+habiller iphone iphone-6.1 1179 2556 iphone
 habiller ipad ipad-13 2064 2752 ipad
 
 "$BIN" captures/brutes/iphone/01-partie.png promo/banniere-1920x1080.png 1920 1080 \

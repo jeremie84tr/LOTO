@@ -56,3 +56,6 @@ playground.xcworkspace
 # ---------- Python (scripts du dépôt) ----------
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.numeros.lock
+*.json.tmp

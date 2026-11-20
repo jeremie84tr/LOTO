@@ -59,5 +59,4 @@ Répartition par nombre de parties où le numéro est sorti :
 ## Points à vérifier
 
 - Les parties 6 à 10 ont entre 48 et 55 numéros, contre 47 à 49 pour les parties 1 à 5. À vérifier pour une éventuelle erreur de saisie.
-- Le fichier `statistiques_2026-11-11_orange.md` est périmé : il ne couvre que les parties 1 à 4.
 - Aucun joueur n'est renseigné sur les cartons : les résultats individuels ne peuvent pas être établis.

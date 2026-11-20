@@ -63,7 +63,8 @@ a { color: var(--accent); }
 .c-proche { background: color-mix(in srgb, var(--orange) 16%, transparent); }
 .c-info { background: color-mix(in srgb, var(--doux) 12%, transparent); font-weight: 400; }
 figure { margin: 24px 0; text-align: center; }
-figure img { max-width: min(100%, 300px); border-radius: 22px; border: 1px solid var(--bord); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+/* Écran d'iPhone : rayon = 62/440 de la largeur (≈ 14,1 %), soit 6,49 % de la hauteur pour une capture 414 × 900. */
+figure img { width: min(100%, 300px); height: auto; aspect-ratio: 414 / 900; border-radius: 14.1% / 6.49%; border: 1px solid var(--bord); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
 figcaption { color: var(--doux); font-size: 14px; margin-top: 8px; }
 .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
 kbd, code {
